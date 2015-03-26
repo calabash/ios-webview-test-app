@@ -204,7 +204,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F52BFB071987EF8700299AEF /* Build configuration list for PBXProject "ios-smoke-test-app" */;
+			buildConfigurationList = F52BFB071987EF8700299AEF /* Build configuration list for PBXProject "ios-webview-test-app" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -483,7 +483,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		F52BFB071987EF8700299AEF /* Build configuration list for PBXProject "ios-smoke-test-app" */ = {
+		F52BFB071987EF8700299AEF /* Build configuration list for PBXProject "ios-webview-test-app" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F52BFB3F1987EF8700299AEF /* Debug */,

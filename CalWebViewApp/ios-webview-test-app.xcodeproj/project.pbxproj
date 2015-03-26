@@ -316,8 +316,8 @@
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CalWebView/CalWebView-Prefix.pch";
-				INFOPLIST_FILE = "CalWebView/CalWebView-Info.plist";
+				GCC_PREFIX_HEADER = "CalWebViewApp/CalWebView-Prefix.pch";
+				INFOPLIST_FILE = "CalWebViewApp/CalWebView-Info.plist";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-force_load",
@@ -411,9 +411,9 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CalWebView/CalWebView-Prefix.pch";
+				GCC_PREFIX_HEADER = "CalWebViewApp/CalWebView-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = LOAD_CALABASH_DYLIB;
-				INFOPLIST_FILE = "CalWebView/CalWebView-Info.plist";
+				INFOPLIST_FILE = "CalWebViewApp/CalWebView-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -432,8 +432,8 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CalWebView/CalWebView-Prefix.pch";
-				INFOPLIST_FILE = "CalWebView/CalWebView-Info.plist";
+				GCC_PREFIX_HEADER = "CalWebViewApp/CalWebView-Prefix.pch";
+				INFOPLIST_FILE = "CalWebViewApp/CalWebView-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -456,8 +456,8 @@
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CalWebView/CalWebView-Prefix.pch";
-				INFOPLIST_FILE = "CalWebView/CalWebView-Info.plist";
+				GCC_PREFIX_HEADER = "CalWebViewApp/CalWebView-Prefix.pch";
+				INFOPLIST_FILE = "CalWebViewApp/CalWebView-Info.plist";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-force_load",

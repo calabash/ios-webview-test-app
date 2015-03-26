@@ -6,11 +6,11 @@ all:
 
 clean:
 	rm -rf build
-	rm -rf CalSmoke.ipa
-	rm -rf CalSmoke.app.dSYM
-	rm -rf CalSmoke.app
-	rm -rf CalSmoke-cal.app
-	rm -rf CalSmoke-cal.app.dSYM
+	rm -rf CalWebView.ipa
+	rm -rf CalWebView.app.dSYM
+	rm -rf CalWebView.app
+	rm -rf CalWebView-cal.app
+	rm -rf CalWebView-cal.app.dSYM
 
 # Builds an ipa with no Calabash server.
 ipa:
@@ -20,7 +20,7 @@ ipa:
 # Builds an ipa that loads the Calabash dylib at runtime.
 ipa-dylib:
 	rm -rf build
-	rm -rf CalSmoke.ipa
+	rm -rf CalWebView.ipa
 	./build-ipa.sh Debug
 
 # Builds an ipa from the -cal target.
@@ -31,19 +31,19 @@ ipa-cal:
 # Builds an app with no Calabash server.
 app:
 	rm -rf build
-	rm -rf CalSmoke.app
+	rm -rf CalWebView.app
 	./build-sim.sh Release
 
 # Builds an app that loads the Calabash dylib at runtime.
 app-dylib:
 	rm -rf build
-	rm -rf CalSmoke.app
+	rm -rf CalWebView.app
 	./build-sim.sh Debug
 
 # Builds an app from the -cal target.
 app-cal:
 	rm -rf build
-	rm -rf CalSmoke-cal.app
+	rm -rf CalWebView-cal.app
 	./build-sim-cal.sh
 
 # For project maintainers only.

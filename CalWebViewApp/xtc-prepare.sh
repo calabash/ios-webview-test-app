@@ -24,8 +24,8 @@ cp -r features "${XAMARIN_DIR}/"
 echo "INFO: installing config/xtc-profiles.yml to ${XAMARIN_DIR}/cucumber.yml"
 cp "./config/xtc-profiles.yml" "${XAMARIN_DIR}/cucumber.yml"
 
-TARGET_NAME="CalSmoke-cal"
-XC_PROJECT="ios-smoke-test-app.xcodeproj"
+TARGET_NAME="CalWebView-cal"
+XC_PROJECT="ios-webview-test-app.xcodeproj"
 XC_SCHEME="${TARGET_NAME}"
 CONFIG="Debug"
 

@@ -2,10 +2,10 @@
 
 require 'fileutils'
 
-cal_app = File.expand_path('./CalSmoke-cal.app')
-cal_ipa = File.expand_path('./xtc-staging/CalSmoke-cal.ipa')
-app = File.expand_path('./CalSmoke.app')
-ipa = File.expand_path('./CalSmoke.ipa')
+cal_app = File.expand_path('./CalWebView-cal.app')
+cal_ipa = File.expand_path('./xtc-staging/CalWebView-cal.ipa')
+app = File.expand_path('./CalWebView.app')
+ipa = File.expand_path('./CalWebView.ipa')
 
 # calabash-ios
 rspec_resources_dir = File.expand_path('~/git/calabash-ios/calabash-cucumber/spec/resources')

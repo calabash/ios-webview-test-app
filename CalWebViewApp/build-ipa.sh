@@ -17,8 +17,8 @@ else
     RBENV_EXEC=
 fi
 
-TARGET_NAME="CalSmoke"
-XC_PROJECT="ios-smoke-test-app.xcodeproj"
+TARGET_NAME="CalWebView"
+XC_PROJECT="ios-webview-test-app.xcodeproj"
 XC_SCHEME="${TARGET_NAME}"
 
 if [ ! -z "${1}" ]; then

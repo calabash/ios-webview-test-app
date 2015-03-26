@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "aa8f030ac9159ee56ef3af27"
                BuildableName = "CalSmoke-cal.app"
-               BlueprintName = "CalSmoke-cal"
+               BlueprintName = "CalWebView-cal"
                ReferencedContainer = "container:ios-webview-test-app.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -54,7 +54,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "aa8f030ac9159ee56ef3af27"
             BuildableName = "CalSmoke-cal.app"
-            BlueprintName = "CalSmoke-cal"
+            BlueprintName = "CalWebView-cal"
             ReferencedContainer = "container:ios-webview-test-app.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -73,7 +73,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "aa8f030ac9159ee56ef3af27"
             BuildableName = "CalSmoke-cal.app"
-            BlueprintName = "CalSmoke-cal"
+            BlueprintName = "CalWebView-cal"
             ReferencedContainer = "container:ios-webview-test-app.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

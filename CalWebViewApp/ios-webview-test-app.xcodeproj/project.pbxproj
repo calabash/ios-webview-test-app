@@ -90,7 +90,7 @@
 		F52BFB031987EF8700299AEF = {
 			isa = PBXGroup;
 			children = (
-				F52BFB151987EF8700299AEF /* CalSmokeApp */,
+				F52BFB151987EF8700299AEF /* CalWebViewApp */,
 				F52BFB0E1987EF8700299AEF /* Frameworks */,
 				F52BFB0D1987EF8700299AEF /* Products */,
 			);
@@ -117,7 +117,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F52BFB151987EF8700299AEF /* CalSmokeApp */ = {
+		F52BFB151987EF8700299AEF /* CalWebViewApp */ = {
 			isa = PBXGroup;
 			children = (
 				F52BFB481987F5FF00299AEF /* UIView+Positioning.h */,
@@ -134,7 +134,7 @@
 				63BB296F01684CBBB34DA64A /* XamCollectionViewCell.m */,
 				63BB20C9E0DC3BBD0058C825 /* XamCollectionViewCell.h */,
 			);
-			path = CalSmokeApp;
+			path = CalWebViewApp;
 			sourceTree = "<group>";
 		};
 		F52BFB161987EF8700299AEF /* Supporting Files */ = {

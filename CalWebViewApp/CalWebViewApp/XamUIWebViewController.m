@@ -27,21 +27,18 @@ typedef enum : NSUInteger {
   return self;
 }
 
-#pragma mark Lazy Evaled Ivars
+#pragma mark - Lazy Evaled Ivars
 
 - (UIWebView *) webView {
   if (_webView) { return _webView; }
-  CGRect frame = CGRectMake(0, 0,
-                            self.view.frame.size.width,
-                            self.view.frame.size.height);
-  _webView = [[UIWebView alloc] initWithFrame:frame];
+  _webView = [[UIWebView alloc] initWithFrame:[self.view bounds]];
   _webView.tag = kTagWebView;
   _webView.accessibilityIdentifier = @"landing page";
   _webView.accessibilityLabel = @"Zielseite";
   return _webView;
 }
 
-#pragma mark View Lifecycle
+#pragma mark - View Lifecycle
 
 - (void) didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];

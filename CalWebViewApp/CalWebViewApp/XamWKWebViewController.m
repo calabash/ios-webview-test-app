@@ -28,10 +28,6 @@
   self.view = view;
 }
 
-- (void)viewDidLoad {
-  [super viewDidLoad];
-}
-
 - (void) viewWillLayoutSubviews {
   [super viewWillLayoutSubviews];
 }

@@ -73,6 +73,11 @@ typedef enum : NSUInteger {
   if (![self.view viewWithTag:kTagWebView]) {
     UIWebView *webView = self.webView;
     [self.view addSubview:webView];
+
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"page"
+                                                     ofType:@"html"];
+    NSURL *url = [NSURL fileURLWithPath:path];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
   }
   [super viewDidAppear:animated];
 }

@@ -1,6 +1,6 @@
 #import "XamAppDelegate.h"
-#import "XamViewController.h"
-#import "XamCollectionViewController.h"
+#import "XamUIWebViewController.h"
+#import "XamWKWebViewController.h"
 
 #if LOAD_CALABASH_DYLIB
 #import <dlfcn.h>
@@ -40,8 +40,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   
-  XamViewController *firstController = [XamViewController new];
-  XamCollectionViewController *secondViewController = [XamCollectionViewController new];
+  XamUIWebViewController *firstController = [XamUIWebViewController new];
+  XamWKWebViewController *secondViewController = [XamWKWebViewController new];
   
   UITabBarController *tabController = [UITabBarController new];
   tabController.tabBar.translucent = NO;

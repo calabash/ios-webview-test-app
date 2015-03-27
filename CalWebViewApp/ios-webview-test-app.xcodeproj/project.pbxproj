@@ -30,6 +30,12 @@
 		F55185561AC34BB600CE06DC /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = F55185541AC34BB600CE06DC /* iTunesArtwork */; };
 		F56E59F91AC558AE005D7D0C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F56E59F81AC558AE005D7D0C /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F56E59FA1AC558BE005D7D0C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F56E59F81AC558AE005D7D0C /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		F56E5A321AC55CF6005D7D0C /* UIWebView+FLUIWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = F56E5A131AC55CF6005D7D0C /* UIWebView+FLUIWebView.m */; };
+		F56E5A331AC55CF6005D7D0C /* UIWebView+FLUIWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = F56E5A131AC55CF6005D7D0C /* UIWebView+FLUIWebView.m */; };
+		F56E5A361AC55CF6005D7D0C /* WKWebView+FLWKWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = F56E5A171AC55CF6005D7D0C /* WKWebView+FLWKWebView.m */; };
+		F56E5A371AC55CF6005D7D0C /* WKWebView+FLWKWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = F56E5A171AC55CF6005D7D0C /* WKWebView+FLWKWebView.m */; };
+		F56E5A4E1AC59144005D7D0C /* FLWebViewLICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = F56E5A4B1AC55E1F005D7D0C /* FLWebViewLICENSE.md */; };
+		F56E5A4F1AC5914A005D7D0C /* FLWebViewLICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = F56E5A4B1AC55E1F005D7D0C /* FLWebViewLICENSE.md */; };
 		a851e37816c4ddd975adbf58 /* XamUIWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BFB281987EF8700299AEF /* XamUIWebViewController.m */; };
 		ab943fbf9d0ac91728d35abe /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F52BFB131987EF8700299AEF /* UIKit.framework */; };
 		cc8f9377c616d69147b3de31 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F52BFB2A1987EF8700299AEF /* Images.xcassets */; };
@@ -60,6 +66,12 @@
 		F52BFB491987F5FF00299AEF /* UIView+Positioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Positioning.m"; sourceTree = "<group>"; };
 		F55185541AC34BB600CE06DC /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		F56E59F81AC558AE005D7D0C /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		F56E5A0E1AC55CF6005D7D0C /* FLWebViewProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLWebViewProvider.h; sourceTree = "<group>"; };
+		F56E5A121AC55CF6005D7D0C /* UIWebView+FLUIWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+FLUIWebView.h"; sourceTree = "<group>"; };
+		F56E5A131AC55CF6005D7D0C /* UIWebView+FLUIWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+FLUIWebView.m"; sourceTree = "<group>"; };
+		F56E5A161AC55CF6005D7D0C /* WKWebView+FLWKWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WKWebView+FLWKWebView.h"; sourceTree = "<group>"; };
+		F56E5A171AC55CF6005D7D0C /* WKWebView+FLWKWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WKWebView+FLWKWebView.m"; sourceTree = "<group>"; };
+		F56E5A4B1AC55E1F005D7D0C /* FLWebViewLICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = FLWebViewLICENSE.md; sourceTree = "<group>"; };
 		F5FE79621988070200842E74 /* CalWebView-cal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CalWebView-cal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		a66015686499dbb45da8c3c4 /* CFNetwork.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -95,6 +107,7 @@
 		F52BFB031987EF8700299AEF = {
 			isa = PBXGroup;
 			children = (
+				F56E5A071AC55CF6005D7D0C /* FLWebView */,
 				F52BFB151987EF8700299AEF /* CalWebViewApp */,
 				F52BFB0E1987EF8700299AEF /* Frameworks */,
 				F52BFB0D1987EF8700299AEF /* Products */,
@@ -126,6 +139,7 @@
 		F52BFB151987EF8700299AEF /* CalWebViewApp */ = {
 			isa = PBXGroup;
 			children = (
+				F56E5A4A1AC55E13005D7D0C /* LICENSES */,
 				F52BFB481987F5FF00299AEF /* UIView+Positioning.h */,
 				F52BFB491987F5FF00299AEF /* UIView+Positioning.m */,
 				F52BFB1E1987EF8700299AEF /* XamAppDelegate.h */,
@@ -152,6 +166,27 @@
 				F52BFB1D1987EF8700299AEF /* CalWebView-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F56E5A071AC55CF6005D7D0C /* FLWebView */ = {
+			isa = PBXGroup;
+			children = (
+				F56E5A0E1AC55CF6005D7D0C /* FLWebViewProvider.h */,
+				F56E5A121AC55CF6005D7D0C /* UIWebView+FLUIWebView.h */,
+				F56E5A131AC55CF6005D7D0C /* UIWebView+FLUIWebView.m */,
+				F56E5A161AC55CF6005D7D0C /* WKWebView+FLWKWebView.h */,
+				F56E5A171AC55CF6005D7D0C /* WKWebView+FLWKWebView.m */,
+			);
+			name = FLWebView;
+			path = FLWebView/FLWebView;
+			sourceTree = "<group>";
+		};
+		F56E5A4A1AC55E13005D7D0C /* LICENSES */ = {
+			isa = PBXGroup;
+			children = (
+				F56E5A4B1AC55E1F005D7D0C /* FLWebViewLICENSE.md */,
+			);
+			name = LICENSES;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +272,7 @@
 				cc8f9377c616d69147b3de31 /* Images.xcassets in Resources */,
 				F55185561AC34BB600CE06DC /* iTunesArtwork in Resources */,
 				e3e0a6761f42ce3d10829b2b /* InfoPlist.strings in Resources */,
+				F56E5A4E1AC59144005D7D0C /* FLWebViewLICENSE.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +283,7 @@
 				F52BFB2B1987EF8700299AEF /* Images.xcassets in Resources */,
 				F55185551AC34BB600CE06DC /* iTunesArtwork in Resources */,
 				F52BFB1A1987EF8700299AEF /* InfoPlist.strings in Resources */,
+				F56E5A4F1AC5914A005D7D0C /* FLWebViewLICENSE.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +317,8 @@
 				66D697701A93DACC0035A763 /* XamWKWebViewController.m in Sources */,
 				F52BFB201987EF8700299AEF /* XamAppDelegate.m in Sources */,
 				63BB24D852A7A25FBE2ECEA0 /* XamCollectionViewCell.m in Sources */,
+				F56E5A361AC55CF6005D7D0C /* WKWebView+FLWKWebView.m in Sources */,
+				F56E5A321AC55CF6005D7D0C /* UIWebView+FLUIWebView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +332,8 @@
 				66D697711A93DACC0035A763 /* XamWKWebViewController.m in Sources */,
 				f23b5a94a19df2bb34667ee7 /* XamAppDelegate.m in Sources */,
 				63BB238FB84B0696F6A79DA1 /* XamCollectionViewCell.m in Sources */,
+				F56E5A371AC55CF6005D7D0C /* WKWebView+FLWKWebView.m in Sources */,
+				F56E5A331AC55CF6005D7D0C /* UIWebView+FLUIWebView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

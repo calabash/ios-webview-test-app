@@ -23,9 +23,18 @@ typedef enum : NSUInteger {
 - (instancetype) init {
   self = [super init];
   if (self){
-    self.tabBarItem = [[UITabBarItem alloc]
-                       initWithTabBarSystemItem:UITabBarSystemItemFavorites
-                       tag:1];
+
+    NSString *tabTitle;
+    if(objc_getClass("WKWebView")) {
+      tabTitle = @"WKWebView";
+    } else {
+      tabTitle = @"UIWebView";
+    }
+
+    UIImage *image = [UIImage imageNamed:@"WKWebViewTab"];
+    self.tabBarItem = [[UITabBarItem alloc] initWithTitle:tabTitle
+                                                    image:image
+                                                      tag:1];
   }
   return self;
 }

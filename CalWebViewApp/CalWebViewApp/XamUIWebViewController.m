@@ -20,9 +20,10 @@ typedef enum : NSUInteger {
 - (instancetype) init {
   self = [super init];
   if (self){
-    self.tabBarItem = [[UITabBarItem alloc]
-                       initWithTabBarSystemItem:UITabBarSystemItemSearch
-                       tag:0];
+    UIImage *image = [UIImage imageNamed:@"UIWebViewTab"];
+    self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"UIWebView"
+                                                    image:image
+                                                      tag:0];
   }
   return self;
 }

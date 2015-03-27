@@ -36,6 +36,8 @@
 		F56E5A371AC55CF6005D7D0C /* WKWebView+FLWKWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = F56E5A171AC55CF6005D7D0C /* WKWebView+FLWKWebView.m */; };
 		F56E5A4E1AC59144005D7D0C /* FLWebViewLICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = F56E5A4B1AC55E1F005D7D0C /* FLWebViewLICENSE.md */; };
 		F56E5A4F1AC5914A005D7D0C /* FLWebViewLICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = F56E5A4B1AC55E1F005D7D0C /* FLWebViewLICENSE.md */; };
+		F56E5A511AC59583005D7D0C /* GlyphishLICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = F56E5A501AC59579005D7D0C /* GlyphishLICENSE.md */; };
+		F56E5A521AC59588005D7D0C /* GlyphishLICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = F56E5A501AC59579005D7D0C /* GlyphishLICENSE.md */; };
 		a851e37816c4ddd975adbf58 /* XamUIWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BFB281987EF8700299AEF /* XamUIWebViewController.m */; };
 		ab943fbf9d0ac91728d35abe /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F52BFB131987EF8700299AEF /* UIKit.framework */; };
 		cc8f9377c616d69147b3de31 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F52BFB2A1987EF8700299AEF /* Images.xcassets */; };
@@ -72,6 +74,7 @@
 		F56E5A161AC55CF6005D7D0C /* WKWebView+FLWKWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WKWebView+FLWKWebView.h"; sourceTree = "<group>"; };
 		F56E5A171AC55CF6005D7D0C /* WKWebView+FLWKWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WKWebView+FLWKWebView.m"; sourceTree = "<group>"; };
 		F56E5A4B1AC55E1F005D7D0C /* FLWebViewLICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = FLWebViewLICENSE.md; sourceTree = "<group>"; };
+		F56E5A501AC59579005D7D0C /* GlyphishLICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = GlyphishLICENSE.md; sourceTree = "<group>"; };
 		F5FE79621988070200842E74 /* CalWebView-cal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CalWebView-cal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		a66015686499dbb45da8c3c4 /* CFNetwork.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -184,6 +187,7 @@
 		F56E5A4A1AC55E13005D7D0C /* LICENSES */ = {
 			isa = PBXGroup;
 			children = (
+				F56E5A501AC59579005D7D0C /* GlyphishLICENSE.md */,
 				F56E5A4B1AC55E1F005D7D0C /* FLWebViewLICENSE.md */,
 			);
 			name = LICENSES;
@@ -273,6 +277,7 @@
 				F55185561AC34BB600CE06DC /* iTunesArtwork in Resources */,
 				e3e0a6761f42ce3d10829b2b /* InfoPlist.strings in Resources */,
 				F56E5A4E1AC59144005D7D0C /* FLWebViewLICENSE.md in Resources */,
+				F56E5A521AC59588005D7D0C /* GlyphishLICENSE.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +288,7 @@
 				F52BFB2B1987EF8700299AEF /* Images.xcassets in Resources */,
 				F55185551AC34BB600CE06DC /* iTunesArtwork in Resources */,
 				F52BFB1A1987EF8700299AEF /* InfoPlist.strings in Resources */,
+				F56E5A511AC59583005D7D0C /* GlyphishLICENSE.md in Resources */,
 				F56E5A4F1AC5914A005D7D0C /* FLWebViewLICENSE.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

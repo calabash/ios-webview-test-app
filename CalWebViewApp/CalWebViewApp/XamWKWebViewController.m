@@ -193,6 +193,7 @@ typedef enum : NSUInteger {
   view.tag = kTagView;
   view.accessibilityIdentifier = @"root";
 
+  view.backgroundColor = [UIColor whiteColor];
   view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
   self.view = view;
 }

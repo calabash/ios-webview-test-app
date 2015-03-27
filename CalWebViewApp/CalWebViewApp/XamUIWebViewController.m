@@ -47,8 +47,11 @@ typedef enum : NSUInteger {
 - (void) loadView {
   CGRect frame = [[UIScreen mainScreen] applicationFrame];
   UIView *view = [[UIView alloc] initWithFrame:frame];
+
   view.tag = kTagView;
   view.accessibilityIdentifier = @"root";
+
+  view.backgroundColor = [UIColor whiteColor];
   view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
   self.view = view;
 }

@@ -145,8 +145,8 @@
 		F52BFB151987EF8700299AEF /* CalWebViewApp */ = {
 			isa = PBXGroup;
 			children = (
-				F56E5A531AC59779005D7D0C /* page.html */,
 				F56E5A4A1AC55E13005D7D0C /* LICENSES */,
+				F56E5A531AC59779005D7D0C /* page.html */,
 				F52BFB481987F5FF00299AEF /* UIView+Positioning.h */,
 				F52BFB491987F5FF00299AEF /* UIView+Positioning.m */,
 				F52BFB1E1987EF8700299AEF /* XamAppDelegate.h */,

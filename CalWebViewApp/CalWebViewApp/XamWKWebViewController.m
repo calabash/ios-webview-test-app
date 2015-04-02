@@ -177,10 +177,13 @@ typedef enum : NSUInteger {
 - (UIView<FLWebViewProvider> *) webView {
   if (_webView) { return _webView; }
 
+  CGRect frame = CGRectMake(0, 20,
+                            self.view.bounds.size.width,
+                            self.view.bounds.size.height - 20);
   if(objc_getClass("WKWebView")) {
-    _webView = [[WKWebView alloc] initWithFrame:[self.view bounds]];
+    _webView = [[WKWebView alloc] initWithFrame:frame];
   } else {
-    _webView = [[UIWebView alloc] initWithFrame:[self.view bounds]];
+    _webView = [[UIWebView alloc] initWithFrame:frame];
   }
 
   _webView.tag = kTagWebView;

@@ -32,7 +32,10 @@ typedef enum : NSUInteger {
 
 - (UIWebView *) webView {
   if (_webView) { return _webView; }
-  _webView = [[UIWebView alloc] initWithFrame:[self.view bounds]];
+  CGRect frame = CGRectMake(0, 20,
+                            self.view.bounds.size.width,
+                            self.view.bounds.size.height - 20);
+  _webView = [[UIWebView alloc] initWithFrame:frame];
   _webView.tag = kTagWebView;
   _webView.accessibilityIdentifier = @"landing page";
   _webView.accessibilityLabel = @"Zielseite";

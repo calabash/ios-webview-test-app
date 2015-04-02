@@ -2,14 +2,6 @@
 
 cd CalWebViewApp
 
-if which rbenv > /dev/null; then
-    RBENV_EXEC="rbenv exec"
-else
-    RBENV_EXEC=
-fi
-
-${RBENV_EXEC} bundle install
-
 TARGET_NAME="CalWebView-cal"
 XC_PROJECT="ios-webview-test-app.xcodeproj"
 XC_SCHEME="${TARGET_NAME}"
@@ -28,7 +20,7 @@ xcrun xcodebuild \
     -scheme "${TARGET_NAME}" \
     -sdk iphonesimulator \
     -configuration "${CAL_BUILD_CONFIG}" \
-    clean build | $RBENV_EXEC bundle exec xcpretty -c
+    clean build | bundle exec xcpretty -c
 
 RETVAL=${PIPESTATUS[0]}
 
@@ -45,6 +37,3 @@ APP_BUNDLE_PATH="${CAL_BUILD_DIR}/Build/Products/${CAL_BUILD_CONFIG}-iphonesimul
 
 echo "INFO: copying ${TARGET_NAME}.app to ./"
 cp -r "${APP_BUNDLE_PATH}" ./
-
-echo "INFO: reseting the iOS Simulators"
-bundle exec calabash-ios sim reset

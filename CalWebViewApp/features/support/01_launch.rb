@@ -13,9 +13,16 @@ module LaunchControl
   end
 end
 
+Before('@restart') do |_|
+  LaunchControl.launcher.run_loop = nil
+end
+
 Before do |_|
-  LaunchControl.launcher.relaunch
-  LaunchControl.launcher.calabash_notify(self)
+  launcher = LaunchControl.launcher
+  unless launcher.active?
+    LaunchControl.launcher.relaunch
+    LaunchControl.launcher.calabash_notify(self)
+  end
 end
 
 After do |_|

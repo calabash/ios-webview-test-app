@@ -8,7 +8,7 @@ before_script:
 script:
   - script/ci/travis/build-and-stage-app.sh
   - script/ci/travis/bundle-install.rb
-  - script/ci/travis/cucumber-ci.rb
+  #- script/ci/travis/cucumber-ci.rb
 
 notifications:
   email: false

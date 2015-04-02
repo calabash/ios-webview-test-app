@@ -1,5 +1,4 @@
 language: objective-c
-cache: bundle
 
 before_script:
   - bundle install
@@ -11,8 +10,5 @@ script:
   - script/ci/travis/cucumber-ci.rb
 
 notifications:
-  email:
-     recipients:
-       - joshua.moody@xamarin.com
-    on_success: change
-    on_failure: always
+  email: false
+

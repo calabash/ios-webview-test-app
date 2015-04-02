@@ -20,7 +20,7 @@ xcrun xcodebuild \
     -scheme "${TARGET_NAME}" \
     -sdk iphonesimulator \
     -configuration "${CAL_BUILD_CONFIG}" \
-    clean build | bundle exec xcpretty -c
+    clean build | xcpretty -c
 
 RETVAL=${PIPESTATUS[0]}
 

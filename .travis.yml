@@ -1,8 +1,9 @@
 language: objective-c
 
 before_script:
-  - bundle install
-  - bundle exec luffa authorize
+   - gem install luffa --no-document --no-document --env-shebang --no-prerelease
+   - gem install xcpretty --no-document --no-document --env-shebang --no-prerelease
+   - luffa authorize
 
 script:
   - script/ci/travis/build-and-stage-app.sh

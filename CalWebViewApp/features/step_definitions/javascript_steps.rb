@@ -73,11 +73,17 @@ When(/^I touch the toggle\-the\-secret button with javascript$/) do
   end
 end
 
-
 Then(/^I should see the secret message has been revealed using javascript$/) do
   page(WebViewApp::TabBar).with_active_page do |page|
     js = "document.getElementById('secret_message').getAttribute('style')"
-    res = query_with_javascript(page, js)
-    expect(res).to be == ['display: block;']
+    options = wait_options('Secret Message Revealed')
+    wait_for(options) do
+      res = query_with_javascript(page, js)
+      if res.empty?
+        false
+      else
+        res.first == 'display: block;'
+      end
+    end
   end
 end

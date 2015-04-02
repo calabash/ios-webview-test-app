@@ -2,15 +2,17 @@ language: objective-c
 cache: bundle
 
 before_script:
-  - gem install luffa --no-document --env-shebang --no-prerelease
-  - luffa authorize
+  - bundle install
+  - bundle exec luffa authorize
 
 script:
-  - script/ci/travis/bundle-install.rb
   - script/ci/travis/build-and-stage-app.sh
-  - script/ci/travis/cucumber-ci.rb --tags ~@no_ci --tags ~@scroll
+  - script/ci/travis/bundle-install.rb
+  - script/ci/travis/cucumber-ci.rb
 
 notifications:
   email:
+     recipients:
+       - joshua.moody@xamarin.com
     on_success: change
     on_failure: always

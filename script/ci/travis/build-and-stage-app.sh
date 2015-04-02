@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd CalSmokeApp
+cd CalWebViewApp
 
 if which rbenv > /dev/null; then
     RBENV_EXEC="rbenv exec"
@@ -10,8 +10,8 @@ fi
 
 ${RBENV_EXEC} bundle install
 
-TARGET_NAME="CalSmoke-cal"
-XC_PROJECT="ios-smoke-test-app.xcodeproj"
+TARGET_NAME="CalWebView-cal"
+XC_PROJECT="ios-webview-test-app.xcodeproj"
 XC_SCHEME="${TARGET_NAME}"
 CAL_BUILD_CONFIG=Debug
 CAL_BUILD_DIR="${PWD}/build/ci"
@@ -46,4 +46,5 @@ APP_BUNDLE_PATH="${CAL_BUILD_DIR}/Build/Products/${CAL_BUILD_CONFIG}-iphonesimul
 echo "INFO: copying ${TARGET_NAME}.app to ./"
 cp -r "${APP_BUNDLE_PATH}" ./
 
+echo "INFO: reseting the iOS Simulators"
 bundle exec calabash-ios sim reset

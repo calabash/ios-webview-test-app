@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require 'luffa'
 
-working_directory = File.expand_path(File.join(File.dirname(__FILE__), '..', '..', '..', 'CalSmokeApp'))
+working_directory = File.expand_path(File.join(File.dirname(__FILE__), '..', '..', '..', 'CalWebViewApp'))
 
 Dir.chdir working_directory do
 

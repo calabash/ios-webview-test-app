@@ -29,6 +29,7 @@ screenshots
 *screenshot*.png
 vendor
 Gemfile.lock
+Gemfile.develop
 .ruby-version
 
 # briar
@@ -52,3 +53,6 @@ xtc-staging
 ## Build products
 build/*
 */build/*
+
+# Private
+publish-page.sh

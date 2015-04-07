@@ -1,41 +1,81 @@
 <html>
 <head>
-  <meta name="viewport" content="initial-scale=1.0" />
+  <meta name="viewport" content="initial-scale=1.0" charset="UTF-8"/>
   <title>Google</title>
 </head>
 <style>
-h1 {margin-top: 40px;}
-a {position:absolute; left:100px}
+h1 {margin-top: 44px;}
 </style>
 <body>
-  <h1>Google header</h1>
-  <div class='menu'><span class='heading'>Heading</span></div>
-  A
-  <ul>
-    <li>one</li>
-    <li>two</li>
-    <li>one</li>
-    <li style='display:none'>ten</li>
-    <li><a href='http://www.googl.com'>link</a></li>
-    <li>Googles phase</li>
-    <li id="secret" style="display: none;">Let Op!</li>
-  </ul>
-  <button id="lp">Show the secret</button>
-  <script>
+  <h1>H1 Header!</h1>
+
+  <h2>H2 Header!</h2>
+
+  <div class='menu'>
+    <span class='heading'>List of Links</span>
+    <ul id="links">
+      <li id="external"> <a id="external" href='http://www.google.com'>An external link.  Don't touch!</a></li>
+      <li id="internal"> <a id="internal" href="#faq" onclick="function() { return true; };">An internal link.  Touch!</a></li>
+  </div>
+
+  <div class='menu'>
+    <span class='heading'>List of Fruits</span>
+    <ul id="fruits">
+      <li id="watermelon">Wassermelone</li>
+      <li id="apple">æble</li>
+      <li id="peach">pêche</li>
+    </ul>
+  </div>
+
+
+  <div class='menu'>
+    <span class='heading'>List of Numbers</span>
+    <ul id="numbers">
+      <li>one</li>
+      <li>two</li>
+      <li>three</li>
+    </ul>
+  </div>
+
+  </br>
+  <hr id="thick_blue_line" width="300" size="8" color="blue" >
+  </br>
+
+
+  <div class='menu'>
+    <span id="secret_message" class='heading' style="display: none;">Let Op!</span>
+    </br>
+    <button id="show_secret">Toggle the Secret</button>
+    <script type="application/javascript">
 (function() {
-  var button = document.getElementById('lp'),
-  secret = document.getElementById('secret');
+  var button = document.getElementById('show_secret'),
+  secret = document.getElementById('secret_message');
 
   button.addEventListener('click', function() {
     if (secret.style.display === 'block') {
       secret.style.display = 'none';
     } else {
-      secret.style.display = '';
+      secret.style.display = 'block';
     }
-    return ['a', 'b', 1];
   });
 }());
 
-  </script>
+    </script>
+  </div>
+
+
+  </br>
+  <hr id="green_stripe"" width="300" size="8" color="green" >
+  </br>
+
+  <div class='menu'>
+    <span class='heading'><a id="faq">FAQ</a></span>
+    <ul id="faq">
+      <li id="calabash">What is a calabash anyway?</li>
+      <li id="break">Isn't it time for a break?</li>
+      <li id="coffee">Can I get you a coffee?</li>
+    </ul>
+  </div>
+
 </body>
 </html>

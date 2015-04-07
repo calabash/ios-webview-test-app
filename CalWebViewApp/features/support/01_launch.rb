@@ -1,19 +1,3 @@
-########################################
-#                                      #
-#       Important Note                 #
-#                                      #
-#   When running calabash-ios tests at #
-#   www.xamarin.com/test-cloud         #
-#   this file will be overwritten by   #
-#   a file which automates             #
-#   app launch on devices.             #
-#                                      #
-#   Don't rely on this file being      #
-#   present when running at            #
-#   Xamarin Test Cloud                 #
-#                                      #
-########################################
-
 require 'calabash-cucumber/launcher'
 
 # noinspection ALL
@@ -29,27 +13,21 @@ module LaunchControl
   end
 end
 
-Before do |scenario|
+Before('@restart') do |_|
+  LaunchControl.launcher.run_loop = nil
+end
+
+Before do |_|
   launcher = LaunchControl.launcher
-  unless launcher.calabash_no_launch?
-    launcher.relaunch
-    launcher.calabash_notify(self)
+  unless launcher.active?
+    LaunchControl.launcher.relaunch
+    LaunchControl.launcher.calabash_notify(self)
   end
 end
 
-After do |scenario|
+After do |_|
   launcher = LaunchControl.launcher
   unless launcher.calabash_no_stop?
     calabash_exit
-    if launcher.active?
-      launcher.stop
-    end
-  end
-end
-
-at_exit do
-  launcher = LaunchControl.launcher
-  if launcher.simulator_target?
-    Calabash::Cucumber::SimulatorHelper.stop unless launcher.calabash_no_stop?
   end
 end

@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
 
-# use bundle and bundle config to specify local gem locations
-# bundle config local.GEM_NAME /path/to/local/git/repository
 gem 'calabash-cucumber', '~> 0.13'
 gem 'briar', '~> 1.2'
 gem 'luffa', '~> 1.0', '>= 1.0.2'
+
+# Use rspec matchers.
+gem 'rspec', '~> 3.0'
 
 gem 'xcpretty', '~> 0.1'
 gem 'rake', '~> 10.3'

@@ -43,7 +43,6 @@ Feature: JavaScript API
     Given I am looking at the UIWebView tab
     When I query the page with bad javascript, I get back an empty array
 
-  @wip
   Scenario: Query WKWebView with bad javascript
     Given I am looking at the WKWebView tab
     When I query the page with bad javascript, I get back a description of the error

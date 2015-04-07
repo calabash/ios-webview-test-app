@@ -60,9 +60,10 @@ end
 
 Then(/^I can use javascript to find the "([^"]*)" list item$/) do |li_id|
   page(WebViewApp::TabBar).with_active_page do |page|
-    js = "document.getElementById('#{li_id}')"
+    js = "document.getElementById('#{li_id}').innerHTML"
     res = query_with_javascript(page, js)
     expect(res.count).to be == 1
+    expect(res.first).to be == 'Wassermelone'
   end
 end
 

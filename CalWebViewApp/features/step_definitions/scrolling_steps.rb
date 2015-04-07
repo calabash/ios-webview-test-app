@@ -60,3 +60,21 @@ And(/^I find the toggle\-the\-secret button with mark$/) do
     end
   end
 end
+
+And(/^I can see the (first|last) name text input field$/) do |input_field_id|
+  page(WebViewApp::TabBar).with_active_page do |page|
+    criteria = "css:'input##{input_field_id}'"
+    visible = lambda {
+      query(page.query_str(criteria)).count == 1
+    }
+
+    counter = 0
+    loop do
+      break if visible.call || counter == 4
+      scroll(page.query_str, :down)
+      step_pause
+      counter = counter + 1
+    end
+  end
+
+end

@@ -88,3 +88,24 @@ Then(/^I should see the secret message has been revealed using javascript$/) do
     end
   end
 end
+
+When(/^I query the page with bad javascript, I get back an? (empty array|description of the error)$/) do |result|
+  page(WebViewApp::TabBar).with_active_page do |page|
+    js = "document.javascriptMethodDoesnotExist('peach')"
+    options = wait_options('Bad JavaScript Query')
+    res = nil
+    wait_for(options) do
+      res = query_with_javascript(page, js)
+      !res.empty?
+    end
+
+    if result == 'empty array'
+      expect(res.count).to be == 1
+      expect(res).to be == ['']
+    else
+      expect(res.count).to be == 1
+      parsed = JSON.parse(res.first)
+      expect(parsed['error']).to be_truthy
+    end
+  end
+end

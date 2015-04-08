@@ -75,6 +75,11 @@ And(/^I can see the (first|last) name text input field$/) do |input_field_id|
       step_pause
       counter = counter + 1
     end
-  end
 
+    # Visibility heuristic is failing.  Input field is _behind_ the tabbar.
+    if iphone_35in?
+      scroll(page.query_str, :down)
+      step_pause
+    end
+  end
 end

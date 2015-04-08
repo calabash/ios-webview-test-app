@@ -36,9 +36,9 @@ module WebViewApp
 
       page_class = page_query.first['class']
       if page_class == 'UIWebView'
-        @active_page = page(WebViewApp::UIWebView)
+        page(WebViewApp::UIWebView)
       elsif page_class == 'WKWebView'
-        @active_page = page(WebViewApp::WKWebView)
+        page(WebViewApp::WKWebView)
       else
         raise "Expected page class '#{page_class}' to be one of [UIWebView, WKWebView]"
       end

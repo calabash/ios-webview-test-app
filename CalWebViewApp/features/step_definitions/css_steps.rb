@@ -8,9 +8,22 @@ Then(/^I can query for hrefs with css$/) do
 end
 
 Then(/^I can query for the body with css$/) do
-  page = page(WebViewApp::TabBar).active_page
-  res = query(page.query_str("css:'body'"))
-  expect(res.count).to be == 1
+  page(WebViewApp::TabBar).with_active_page do |page|
+    qstr = page.query_str("css:'body'")
+    visible = lambda {
+      query(qstr).count == 1
+    }
+
+    counter = 0
+    loop do
+      break if visible.call || counter == 4
+      scroll(page.query_str, :down)
+      step_pause
+      counter = counter + 1
+    end
+    res = query(qstr)
+    expect(res.count).to be == 1
+  end
 end
 
 # 3.5in iPhones will only show 2; all others will show 3

@@ -10,7 +10,19 @@ end
 
 And(/^I can query for the body with xpath$/) do
   page(WebViewApp::TabBar).with_active_page do |page|
-    res = query(page.query_str("xpath:'//body'"))
+    qstr = page.query_str("xpath:'//body'")
+    visible = lambda {
+      query(qstr).count == 1
+    }
+
+    counter = 0
+    loop do
+      break if visible.call || counter == 4
+      scroll(page.query_str, :down)
+      step_pause
+      counter = counter + 1
+    end
+    res = query(qstr)
     expect(res.count).to be == 1
   end
 end

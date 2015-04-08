@@ -20,11 +20,18 @@ Then(/^I should be able to use the setText API to set the text to "([^"]*)"$/) d
     wait_for(options) do
       !query(qstr).empty?
     end
-    sleep(2)
     set_text(qstr, new_text)
 
-    result = query(qstr)
-    expect(result.count).to be == 1
-    expect(result.first['textContent']).to be == new_text
+    js = "document.getElementById('firstname').value"
+    hash = { calabashStringByEvaluatingJavaScript:js }
+    options = wait_options("firstname => #{new_text}")
+    wait_for(options) do
+      result =  query(page.query_str, hash)
+      if result.count == 1
+        result.first == new_text
+      else
+        false
+      end
+    end
   end
 end

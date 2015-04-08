@@ -27,3 +27,4 @@ default: APP="./CalWebView-cal.app" -p common
 ### DEVICE ###
 device_common: -p common BUNDLE_ID=com.xamarin.CalWebView-cal
 hat:   DEVICE_TARGET=<%= devices[:hat][:udid] %> DEVICE_ENDPOINT=<%= devices[:hat][:ip] %> -p device_common
+neptune:   DEVICE_TARGET=<%= devices[:neptune][:udid] %> DEVICE_ENDPOINT=<%= devices[:neptune][:ip] %> -p device_common

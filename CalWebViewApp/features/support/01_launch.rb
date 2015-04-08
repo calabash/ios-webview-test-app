@@ -25,6 +25,11 @@ Before do |_|
   end
 end
 
+
+After('@restart_after') do |_|
+  LaunchControl.launcher.run_loop = nil
+end
+
 After do |_|
   launcher = LaunchControl.launcher
   unless launcher.calabash_no_stop?

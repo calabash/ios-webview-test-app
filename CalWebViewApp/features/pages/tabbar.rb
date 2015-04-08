@@ -25,7 +25,15 @@ module WebViewApp
       end
 
       touch(qstr)
-      step_pause
+
+      with_active_page do |page|
+        qstr = page.query_str
+        options = wait_options('Waiting for page to load')
+        wait_for(options) do
+          res = query(qstr, :isLoading)
+          !res.empty? && res.first.to_i == 0
+        end
+      end
     end
 
     def active_page

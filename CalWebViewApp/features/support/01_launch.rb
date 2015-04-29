@@ -18,9 +18,11 @@ Before('@restart') do |_|
 end
 
 Before do |_|
+  #RunLoop::SimControl.new.reset_sim_content_and_settings
   launcher = LaunchControl.launcher
+  #launcher.run_loop = nil
   unless launcher.active?
-    LaunchControl.launcher.relaunch
+    LaunchControl.launcher.relaunch({:relaunch_simulator => false})
     LaunchControl.launcher.calabash_notify(self)
   end
 end

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'calabash-cucumber', '~> 0.13'
+gem 'calabash-cucumber', '~> 0.14'
 gem 'briar', '~> 1.2'
 gem 'luffa', '~> 1.0', '>= 1.0.2'
 

@@ -5,3 +5,20 @@
 ## CalWebView App
 
 An app with a UIWebView and a WKWebView for testing Calabash iOS and Calabash iOS Server.
+
+### Tests
+
+```
+$ git clone git@github.com:calabash/ios-webview-test-app.git
+$ cd ios-webview-test-app/CalWebViewApp
+$ bundle
+$ make app-cal
+$ be cucumber
+```
+
+### Console
+
+```
+$ APP=./CalWebView-cal.app be calabash-ios console
+> start_test_server_in_background
+```

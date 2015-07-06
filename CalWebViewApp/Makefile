@@ -49,7 +49,8 @@ app-cal:
 	rm -rf CalWebView-cal.app
 	script/make/make-app-cal.sh
 
-# For project maintainers only.
+### For project maintainers only.
+
 install_test_binaries:
 	$(MAKE) clean
 	$(MAKE) all
@@ -59,6 +60,11 @@ new:
 	bundle exec briar install calabash-server
 	$(MAKE) app-cal
 	bundle exec cucumber
+
+# Publishes CalWebView/page.html on CI @ the end of the world
+# Requires ssh access to the remote server
+publish-page:
+	script/make/publish-page.sh
 
 tags:
 	script/make/vim-ctags.sh

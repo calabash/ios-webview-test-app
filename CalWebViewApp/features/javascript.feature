@@ -36,6 +36,7 @@ Feature: JavaScript API
   @restart
   Scenario: Touch button on WKWebView with javascript
     Given I am looking at the WKWebView tab
+    And I can see the green line with css
     When I touch the toggle-the-secret button with javascript
     Then I should see the secret message has been revealed using javascript
 

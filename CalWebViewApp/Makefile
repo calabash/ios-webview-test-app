@@ -59,3 +59,6 @@ new:
 	bundle exec briar install calabash-server
 	$(MAKE) app-cal
 	bundle exec cucumber
+
+tags:
+	script/make/vim-ctags.sh

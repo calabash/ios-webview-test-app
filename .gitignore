@@ -28,7 +28,6 @@ reports
 screenshots
 *screenshot*.png
 vendor
-Gemfile.lock
 Gemfile.develop
 .ruby-version
 

@@ -67,3 +67,4 @@ fi
 
 mv "${APP_BUNDLE_PATH}" "${PWD}/${APP}"
 echo "export APP=${PWD}/${APP}"
+

@@ -18,11 +18,19 @@ Before('@restart') do |_|
 end
 
 Before do |_|
-  #RunLoop::SimControl.new.reset_sim_content_and_settings
   launcher = LaunchControl.launcher
-  #launcher.run_loop = nil
+
+  options = {
+    # Physical devices: default is :host
+    # Xcode < 7.0:      default is :prefences
+    # Xcode >= 7.0:     default is :host
+    # :uia_strategy => :shared_element,
+    # :uia_strategy => :preferences,
+    # :uia_strategy => :host
+    :relaunch_simulator => false,
+  }
   unless launcher.active?
-    LaunchControl.launcher.relaunch({:relaunch_simulator => false})
+    LaunchControl.launcher.relaunch(options)
     LaunchControl.launcher.calabash_notify(self)
   end
 end

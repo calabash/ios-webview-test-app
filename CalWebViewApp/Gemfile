@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'calabash-cucumber', '>= 0.16.2', '< 2.0'
-gem 'run_loop', '>= 1.5.4', '< 2.0'
-gem 'briar', '>= 1.4.1', '< 2.0'
+gem 'calabash-cucumber', '>= 0.16.4', '< 2.0'
+gem 'run_loop', '>= 1.5.5', '< 2.0'
+gem 'briar', '>= 1.4.2', '< 2.0'
 gem 'luffa', '~> 1.0', '>= 1.0.2'
 
 # Use rspec matchers.

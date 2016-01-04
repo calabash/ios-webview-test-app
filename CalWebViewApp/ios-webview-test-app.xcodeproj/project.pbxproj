@@ -208,6 +208,7 @@
 				F52BFB091987EF8700299AEF /* Frameworks */,
 				F52BFB0A1987EF8700299AEF /* Resources */,
 				F51F2E8E1AB359A6002326D0 /* Run Script Add Calabash dylibs to Bundle */,
+				F52EA1051C3AAFE000F5862B /* Run Script Stage Products */,
 			);
 			buildRules = (
 			);
@@ -225,6 +226,7 @@
 				b17dee660dc338602790258e /* Sources */,
 				146d6a283e5268ae50e42bb6 /* Frameworks */,
 				5fe138bfdd8a11df266b0f94 /* Resources */,
+				F52EA1061C3AB02600F5862B /* Run Script Stage Products */,
 			);
 			buildRules = (
 			);
@@ -314,7 +316,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "script/xcode-build-phase/add-calabash-dylibs-to-bundle.sh";
+			shellScript = "bin/xcode-build-phase/add-calabash-dylibs-to-bundle.sh";
+			showEnvVarsInLog = 0;
+		};
+		F52EA1051C3AAFE000F5862B /* Run Script Stage Products */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script Stage Products";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bin/xcode-build-phase/stage-products.sh";
+			showEnvVarsInLog = 0;
+		};
+		F52EA1061C3AB02600F5862B /* Run Script Stage Products */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script Stage Products";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bin/xcode-build-phase/stage-cal-products.sh";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -443,6 +443,7 @@
 					"\"$(SRCROOT)/calabash.framework/calabash\"",
 					"-lstdc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "sh.calaba.CalWebView-cal";
 				PRODUCT_NAME = "CalWebView-cal";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -542,6 +543,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = sh.calaba.CalWebView;
 				PRODUCT_NAME = CalWebView;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -566,6 +568,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = sh.calaba.CalWebView;
 				PRODUCT_NAME = CalWebView;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -597,6 +600,7 @@
 					"\"$(SRCROOT)/calabash.framework/calabash\"",
 					"-lstdc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "sh.calaba.CalWebView-cal";
 				PRODUCT_NAME = "CalWebView-cal";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";

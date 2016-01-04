@@ -38,7 +38,8 @@ Gemfile.develop
 ci-reports
 
 # xamarin build directory for XTC
-xtc-staging
+xtc-submit-calabash-embedded
+xtc-submit-calabash-linked
 
 # Xcode 4+
 *.xcodeproj/*.mode*

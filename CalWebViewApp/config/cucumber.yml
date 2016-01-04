@@ -21,10 +21,9 @@ common:  NO_STOP='1' -f Slowhandcuke::Formatter
 
 ### SIMULATOR ###
 
-default: APP="./CalWebView-cal.app" -p common
-
+default: APP="./Products/app-cal/CalWebView-cal.app" -p common
 
 ### DEVICE ###
-device_common: -p common BUNDLE_ID=com.xamarin.CalWebView-cal
+device_common: -p common BUNDLE_ID=sh.calaba.CalWebView-cal
 hat:   DEVICE_TARGET=<%= devices[:hat][:udid] %> DEVICE_ENDPOINT=<%= devices[:hat][:ip] %> -p device_common
 neptune:   DEVICE_TARGET=<%= devices[:neptune][:udid] %> DEVICE_ENDPOINT=<%= devices[:neptune][:ip] %> -p device_common

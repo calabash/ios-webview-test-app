@@ -115,14 +115,15 @@
       "scale" : "2x"
     },
     {
-      "size" : "120x120",
-      "idiom" : "car",
-      "filename" : "Icon-60@2x-1.png",
-      "scale" : "1x"
+      "size" : "83.5x83.5",
+      "idiom" : "ipad",
+      "filename" : "ipad-pro-icon.png",
+      "scale" : "2x"
     },
     {
       "size" : "24x24",
       "idiom" : "watch",
+      "filename" : "24.png",
       "scale" : "2x",
       "role" : "notificationCenter",
       "subtype" : "38mm"
@@ -130,6 +131,7 @@
     {
       "size" : "27.5x27.5",
       "idiom" : "watch",
+      "filename" : "27.5.png",
       "scale" : "2x",
       "role" : "notificationCenter",
       "subtype" : "42mm"
@@ -137,18 +139,21 @@
     {
       "size" : "29x29",
       "idiom" : "watch",
+      "filename" : "29@2x.png",
       "role" : "companionSettings",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "watch",
+      "filename" : "29@3x.png",
       "role" : "companionSettings",
       "scale" : "3x"
     },
     {
       "size" : "40x40",
       "idiom" : "watch",
+      "filename" : "40@2x.png",
       "scale" : "2x",
       "role" : "appLauncher",
       "subtype" : "38mm"
@@ -156,6 +161,7 @@
     {
       "size" : "44x44",
       "idiom" : "watch",
+      "filename" : "44.png",
       "scale" : "2x",
       "role" : "longLook",
       "subtype" : "42mm"
@@ -163,6 +169,7 @@
     {
       "size" : "86x86",
       "idiom" : "watch",
+      "filename" : "86.png",
       "scale" : "2x",
       "role" : "quickLook",
       "subtype" : "38mm"
@@ -170,6 +177,7 @@
     {
       "size" : "98x98",
       "idiom" : "watch",
+      "filename" : "98.png",
       "scale" : "2x",
       "role" : "quickLook",
       "subtype" : "42mm"

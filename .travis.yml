@@ -1,15 +1,22 @@
 language: objective-c
 
 before_script:
-   - gem install luffa --no-document --no-document --env-shebang --no-prerelease
-   - gem install xcpretty --no-document --no-document --env-shebang --no-prerelease
-   - luffa authorize
+- gem install luffa --no-document --no-document --env-shebang --no-prerelease
+- gem install xcpretty --no-document --no-document --env-shebang --no-prerelease
+- luffa authorize
 
 script:
-  - script/ci/travis/build-and-stage-app.sh
-  - script/ci/travis/bundle-install.rb
-  #- script/ci/travis/cucumber-ci.rb
+- bin/ci/travis/run.sh
 
 notifications:
-  email: false
+  email:
+    recipients:
+    - joshua.moody@xamarin.com
+    - chris.fuentes@xamarin.com
+    - tobias.roikjer@xamarin.com
+    on_success: change
+    on_failure: always
+  slack:
+    rooms:
+      secure: CrmEHmKBuCFwuImLwK1Xn45XFzVb9iNxMfryA7YQsc1+Jc7m5/ot8eXUSxY8sEFN4hRfSRA4Dm27vdw9y0LbPfq76hSEFHVflebGhWK7yrLWcUGePZDibHHrU5Uqa6zmhwmQQaZFPCL4ZZ9yFJYf+DT5Q2XWTKD1TvEzyIvgt0I=
 

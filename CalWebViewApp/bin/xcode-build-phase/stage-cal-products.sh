@@ -43,9 +43,9 @@ if [ ${CONFIGURATION} != "Debug" ]; then
 fi
 
 if [ ${EFFECTIVE_PLATFORM_NAME} = "-iphoneos" ]; then
-  APP_TARGET_DIR="${SOURCE_ROOT}/Products/ipa/${TARGET_NAME}"
+  APP_TARGET_DIR="${SOURCE_ROOT}/Products/ipa-cal"
 else
-  APP_TARGET_DIR="${SOURCE_ROOT}/Products/app/${TARGET_NAME}"
+  APP_TARGET_DIR="${SOURCE_ROOT}/Products/app-cal"
 fi
 
 

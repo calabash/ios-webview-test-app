@@ -47,14 +47,14 @@ XC_TARGET="CalWebView-cal"
 XC_PROJECT="ios-webview-test-app.xcodeproj"
 XC_SCHEME="${XC_TARGET}"
 XC_CONFIG=Debug
-XC_BUILD_DIR="${PWD}/build/ipa/CalSmoke-cal"
+XC_BUILD_DIR="${PWD}/build/ipa-cal"
 
 
 APP="${XC_TARGET}.app"
 DSYM="${APP}.dSYM"
 IPA="${XC_TARGET}.ipa"
 
-INSTALL_DIR="Products/ipa/CalSmoke-cal"
+INSTALL_DIR="Products/ipa-cal"
 INSTALLED_APP="${INSTALL_DIR}/${APP}"
 INSTALLED_DSYM="${INSTALL_DIR}/${DSYM}"
 INSTALLED_IPA="${INSTALL_DIR}/${IPA}"

@@ -45,13 +45,13 @@ fi
 
 XC_TARGET="CalWebView-cal"
 XC_PROJECT="ios-webview-test-app.xcodeproj"
-XC_BUILD_DIR="${PWD}/build/app/CalSmoke-cal"
+XC_BUILD_DIR="${PWD}/build/app-cal"
 XC_CONFIG=Debug
 
 APP="${XC_TARGET}.app"
 DSYM="${APP}.dSYM"
 
-INSTALL_DIR="Products/app/CalSmoke-cal"
+INSTALL_DIR="Products/app-cal"
 INSTALLED_APP="${INSTALL_DIR}/${APP}"
 INSTALLED_DSYM="${INSTALL_DIR}/${DSYM}"
 

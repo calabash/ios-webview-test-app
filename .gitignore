@@ -49,7 +49,7 @@ xtc-submit-calabash-linked
 *.xcodeproj/project.xcworkspace/xcuserdata
 *.xcuserdatad
 *.xcworkspace/xcshareddata/*.xccheckout
-.xcscmblueprint
+*.xcscmblueprint
 
 ## Build products
 build/*

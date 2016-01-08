@@ -63,7 +63,7 @@ end
 
 And(/^I can see the (first|last) name text input field$/) do |input_field_id|
   page(WebViewApp::TabBar).with_active_page do |page|
-    criteria = "css:'input##{input_field_id}'"
+    criteria = "css:'input##{input_field_id}name'"
     visible = lambda {
       query(page.query_str(criteria)).count == 1
     }

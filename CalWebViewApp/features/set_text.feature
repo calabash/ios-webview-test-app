@@ -1,3 +1,4 @@
+@settext
 Feature: setText Operation
   In order to maintain a stable WebView setText Operation
   As a Calabash iOS maintainer

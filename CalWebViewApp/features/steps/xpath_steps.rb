@@ -49,6 +49,7 @@ When(/^I touch the internal link with xpath$/) do
       !query(qstr).empty?
     end
     touch(qstr)
+    wait_for_none_animating
   end
 end
 

@@ -12,3 +12,7 @@ end
 
 puts_calabash_environment
 briar_message_of_the_day
+
+APP="Products/app-cal/CalWebView-cal.app"
+ENV["APP"] = APP
+

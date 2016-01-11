@@ -6,7 +6,7 @@ before_script:
 - luffa authorize
 
 script:
-- bin/ci/travis/run.sh
+- bin/ci/travis/run.rb
 
 notifications:
   email:

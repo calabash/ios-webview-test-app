@@ -8,6 +8,7 @@ bin/ci/install-keychain.sh
 # bin/ci/jenkins/install-framework.sh
 
 (cd CalWebViewApp; make clean)
-bin/ci/make-ipa.sh
+
+bundle exec bin/ci/test-cloud.rb
 bundle exec bin/ci/jenkins/cucumber.rb
 

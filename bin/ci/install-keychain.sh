@@ -1,25 +1,32 @@
 #!/usr/bin/env bash
 
-if [ -z "${JENKINS_HOME}" ] && [ -z "${TRAVIS}" ]; then
-  echo "FAIL: only run this script on Jenkins or Travis"
-  exit 1
-fi
-
 mkdir -p "${HOME}/.calabash"
 
 CODE_SIGN_DIR="${HOME}/.calabash/calabash-codesign"
 
-rm -rf "${CODE_SIGN_DIR}"
-
 if [ -e "${CODE_SIGN_DIR}" ]; then
-  # Previous step or run checked out this file.
-  (cd "${CODE_SIGN_DIR}" && git reset --hard)
-  (cd "${CODE_SIGN_DIR}" && git checkout master)
-  (cd "${CODE_SIGN_DIR}" && git pull)
+  # In CI, make sure we are on the master with no changes
+  if [ -n "${JENKINS_HOME}" ] || [ -n "${TRAVIS}" ]; then
+    (cd "${CODE_SIGN_DIR}" && git reset --hard)
+    (cd "${CODE_SIGN_DIR}" && git checkout master)
+    (cd "${CODE_SIGN_DIR}" && git pull)
+  fi
 else
-  git clone \
-    git@github.com:calabash/calabash-codesign.git \
-    "${CODE_SIGN_DIR}"
+  if [ -z "${TRAVIS}" ]; then
+    git clone \
+      git@github.com:calabash/calabash-codesign.git \
+      "${CODE_SIGN_DIR}"
+  else
+    git clone \
+      https://github.com/calabash/calabash-codesign.git \
+      "${CODE_SIGN_DIR}"
+  fi
+
+  if [ "$?" != "0" ]; then
+    echo "ERROR: Could not clone the calabash/calabash-codesign repo."
+    echo "ERROR: Do you have permissions?"
+    exit 1
+  fi
 fi
 
 (cd "${CODE_SIGN_DIR}" && ios/create-keychain.sh)

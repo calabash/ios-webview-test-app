@@ -24,7 +24,20 @@ module WebViewApp
         !query(qstr).empty?
       end
 
-      touch(qstr)
+      count = 0
+      begin
+        touch(qstr)
+      rescue => e
+        count = count + 1
+        if count == 3
+          raise e.message
+        else
+          puts "Touch failed; retrying..."
+        end
+
+        sleep(0.4)
+        retry
+      end
 
       with_active_page do |page|
         qstr = page.query_str

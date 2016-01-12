@@ -4,6 +4,7 @@ gem 'calabash-cucumber', '>= 0.17.0', '< 2.0'
 gem "run_loop", "~> 2.0"
 gem 'briar', "~> 2.0"
 gem 'luffa', '~> 1.0', '>= 1.0.2'
+gem "xamarin-test-cloud", "2.0.0.pre2"
 
 # Use rspec matchers.
 gem 'rspec', '~> 3.0'

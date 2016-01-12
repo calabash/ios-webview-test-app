@@ -34,6 +34,10 @@ Dir.chdir working_dir do
         :iphone5s => 'iPhone 5s',
         :iphone6 => 'iPhone 6',
     }
+
+    FileUtils.rm_rf("reports")
+    FileUtils.mkdir("reports")
+
     if ENV["JENKINS_HOME"]
       devices[:iphone6sPlus] = 'iPhone 6s Plus'
     else
@@ -47,7 +51,7 @@ Dir.chdir working_dir do
     passed_sims = []
     failed_sims = []
     devices.each do |key, name|
-      cucumber_cmd = "bundle exec cucumber -p default --format json -o reports/#{key}.json #{cucumber_args}"
+      cucumber_cmd = "bundle exec cucumber -p default -f json -o reports/#{key}.json -f junit -o reports/#{key} #{cucumber_args}"
 
       match = simulators.find do |sim|
         sim.name == name && sim.version == sim_version

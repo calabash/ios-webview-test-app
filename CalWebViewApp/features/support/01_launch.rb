@@ -28,6 +28,7 @@ Before do |_|
     # :uia_strategy => :preferences,
     # :uia_strategy => :host
     :relaunch_simulator => false,
+    :uia_strategy => :preferences
   }
   unless launcher.active?
     LaunchControl.launcher.relaunch(options)

@@ -99,13 +99,12 @@ When(/^I query the page with bad javascript, I get back an? (empty array|descrip
       !res.empty?
     end
 
-    if result == 'empty array'
-      expect(res.count).to be == 1
-      expect(res).to be == ['']
+    if page.query_str == "UIWebView"
+      expect(res).to be == [""]
     else
       expect(res.count).to be == 1
       parsed = JSON.parse(res.first)
-      expect(parsed['error']).to be_truthy
+      expect(parsed["error"]).to be_truthy
     end
   end
 end

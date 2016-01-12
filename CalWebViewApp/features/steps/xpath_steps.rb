@@ -49,13 +49,34 @@ When(/^I touch the internal link with xpath$/) do
       !query(qstr).empty?
     end
     touch(qstr)
+    wait_for_none_animating
   end
 end
 
 Then(/^a query for the FAQ with xpath should succeed$/) do
   page(WebViewApp::TabBar).with_active_page do |page|
-    res = query(page.query_str("xpath:'//span/a[contains(@id,\"faq\")]'"))
-    expect(res.count).to be == 1
+    qstr = page.query_str("xpath:'//span/a[contains(@id,\"faq\")]'")
+
+    is_wkwebview = qstr[/WKWebView/,0]
+
+    if xamarin_test_cloud?
+       xcode_lte_611 = false
+    else
+      xcode_version = RunLoop::Xcode.new.version
+      xcode_lte_611 = xcode_version <= RunLoop::Version.new("6.1.1")
+    end
+
+    if xcode_lte_611 && is_wkwebview
+      puts %Q{
+Detecting Xcode <= 6.1.1 and a WKWebView!
+
+Skipping test because link is not touchable.
+}
+      $stdout.flush
+    else
+      res = query(qstr)
+      expect(res.count).to be == 1
+    end
   end
 end
 

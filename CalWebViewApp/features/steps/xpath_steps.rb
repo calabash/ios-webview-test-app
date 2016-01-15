@@ -17,7 +17,7 @@ And(/^I can query for the body with xpath$/) do
 
     counter = 0
     loop do
-      break if visible.call || counter == 4
+      break if visible.call || counter == 8
       scroll(page.query_str, :down)
       step_pause
       counter = counter + 1

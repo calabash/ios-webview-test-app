@@ -22,7 +22,7 @@ Then(/^I can query within the iframe with css for (\d+) "([^"]*)"$/) do |num, no
   res = query(page.query_str("css:'iframe' css:'#{nodeName}'"))
   # Distinguish between a and a w/ href
   inputs = res.select { |elm| elm['nodeName'].downcase == nodeName.downcase }
-  expect(inputs.count).to be == num
+  expect(inputs.count).to be == num.to_i
 end
 
 Then(/^I can query for "([^"]*)" with id "([^"]*)"$/) do |nodeName, el_id|

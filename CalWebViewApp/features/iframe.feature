@@ -52,12 +52,12 @@ Feature: iframe API
   Scenario: Enter text in textarea within UIWebView iframe using css
     Given I am looking at the UIWebView tab
     And I can see the iframe
-    Then I can enter "Lorem Ipsum Calabus" in the "textarea" with id "name"
+    Then I can enter "Lorem Ipsum Calabus" in the "textarea" with id "textarea"
 
   Scenario: Enter text in textarea within WKWebView iframe using css
     Given I am looking at the WKWebView tab
     And I can see the iframe
-    Then I can enter "Lorem Ipsum Calabus" in the "textarea" with id "name"
+    Then I can enter "Lorem Ipsum Calabus" in the "textarea" with id "textarea"
 
   Scenario: Click a button within a UIWebView iframe
     Given I am looking at the UIWebView tab

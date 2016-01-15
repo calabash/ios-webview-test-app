@@ -33,10 +33,10 @@ end
 
 Then(/^I can enter "([^"]*)" in the "([^"]*)" with id "([^"]*)"$/) do |text, nodeName, el_id|
   page = page(WebViewApp::TabBar).active_page
-  res = enter_text(page.query_str("css:'iframe' css:'#{nodeName}##{el_id}'"), text)
-  expect(res.count).to be > 0
-  elementText = query(page.query_str("css:'iframe' css:'nodeName##{el_id}'")).first['textContent']
-  expect(elementText).to be == text
+  q = page.query_str("css:'iframe' css:'#{nodeName}##{el_id}'")
+  enter_text(q, text)
+  element_text = query(q).first['textContent']
+  expect(element_text).to be == text
 end
 
 When(/^I click the "([^"]*)" with id "([^"]*)"$/) do |nodeName, el_id|

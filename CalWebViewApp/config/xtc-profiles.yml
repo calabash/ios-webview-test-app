@@ -7,7 +7,7 @@ ipad_only:   --tags ~@iphone --tags ~@iphone_only
 
 defaults:    -p not_xtc -p not_sim NO_STOP=1
 
-default:     -p defaults
+default:     -p defaults --backtrace
 ci:          -p defaults --tags ~@no_ci
 
 wip:         -p defaults --tags @wip

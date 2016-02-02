@@ -1,9 +1,11 @@
 And(/^I can see the iframe$/) do
   page(WebViewApp::TabBar).with_active_page do |page|
-    qstr = page.query_str("css:'iframe'")
-    visible = lambda {
-      query(qstr).count == 1
-    }
+    iframe_query = page.query_str("css:'iframe'")
+    button_query = page.query_str("css:'iframe' css:'button'")
+    visible = lambda do
+      query(iframe_query).count == 1 &&
+      query(button_query).count == 1
+    end
 
     counter = 0
     loop do
@@ -12,7 +14,7 @@ And(/^I can see the iframe$/) do
       step_pause
       counter = counter + 1
     end
-    res = query(qstr)
+    res = query(iframe_query)
     expect(res.count).to be == 1
   end
 end

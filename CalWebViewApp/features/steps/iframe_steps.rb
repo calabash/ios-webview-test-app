@@ -2,8 +2,9 @@ And(/^I can see the iframe$/) do
   page(WebViewApp::TabBar).with_active_page do |page|
     iframe_query = page.query_str("css:'iframe'")
     button_query = page.query_str("css:'iframe' css:'button'")
+
     visible = lambda do
-      query(iframe_query).count == 1 &&
+      !query(iframe_query).empty? &&
       query(button_query).count == 1
     end
 
@@ -21,7 +22,7 @@ And(/^I can see the iframe$/) do
     end
 
     res = query(iframe_query)
-    expect(res.count).to be == 1
+    expect(res.empty?).to be_falsey
   end
 end
 

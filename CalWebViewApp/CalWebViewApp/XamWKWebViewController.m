@@ -235,7 +235,7 @@ typedef enum : NSUInteger {
                                                      ofType:@"html"];
     NSURL *url = [NSURL fileURLWithPath:path];
 #else
-    NSString *page = @"https://raw.githubusercontent.com/calabash/ios-webview-test-app/master/CalWebViewApp/CalWebViewApp/page.html";
+    NSString *page = @"https://cdn.rawgit.com/calabash/ios-webview-test-app/master/CalWebViewApp/CalWebViewApp/page.html";
     NSURL *url = [NSURL URLWithString:page];
 #endif
 

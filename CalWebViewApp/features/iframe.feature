@@ -1,3 +1,5 @@
+@iframe
+@restart
 Feature: iframe API
   In order to maintain a stable WebView iframe API
   As a Calabash iOS maintainer
@@ -43,6 +45,7 @@ Feature: iframe API
     Then I should receive confirmation that I've clicked the button
 
   @wkwebview
+  @pending
   Scenario: Query within a WKWebView iframe
     Given I am looking at the WKWebView tab
     And I can see the iframe
@@ -51,6 +54,7 @@ Feature: iframe API
     And I can query within the iframe with css for 1 "textarea"
 
   @wkwebview
+  @pending
   Scenario: Query WKWebView iframe elements by id using css
     Given I am looking at the WKWebView tab
     And I can see the iframe
@@ -61,6 +65,7 @@ Feature: iframe API
     And I can query for "button" with id "button"
 
   @wkwebview
+  @pending
   Scenario: Enter text in input fields within WKWebView iframe using css
     Given I am looking at the WKWebView tab
     And I can see the iframe
@@ -69,12 +74,14 @@ Feature: iframe API
     And I can enter "C@1AB@5H" in the "input" with id "password"
 
   @wkwebview
+  @pending
   Scenario: Enter text in textarea within WKWebView iframe using css
     Given I am looking at the WKWebView tab
     And I can see the iframe
     Then I can enter "Lorem Ipsum Calabus" in the "textarea" with id "textarea"
 
   @wkwebview
+  @pending
   Scenario: Click a button within a WKWebView iframe
     Given I am looking at the WKWebView tab
     And I can see the iframe

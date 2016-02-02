@@ -14,6 +14,12 @@ And(/^I can see the iframe$/) do
       step_pause
       counter = counter + 1
     end
+
+    if iphone_35in?
+      scroll(page.query_str, :down)
+      step_pause
+    end
+
     res = query(iframe_query)
     expect(res.count).to be == 1
   end

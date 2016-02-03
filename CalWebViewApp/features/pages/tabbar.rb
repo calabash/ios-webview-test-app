@@ -1,4 +1,6 @@
 require 'calabash-cucumber/ibase'
+require "run_loop"
+
 require File.join(File.dirname(__FILE__), '..', 'support', 'wait_options')
 
 module WebViewApp
@@ -41,7 +43,15 @@ module WebViewApp
 
       with_active_page do |page|
         qstr = page.query_str
-        options = wait_options('Waiting for page to load')
+
+        if RunLoop::Environment.ci? ||
+            RunLoop::Environment.xtc?
+          timeout = 30
+        else
+          timeout = 15
+        end
+        options = wait_options('Waiting for page to load',
+                               {:timeout => timeout})
         wait_for(options) do
           res = query(qstr, :isLoading)
           !res.empty? && res.first.to_i == 0

@@ -16,7 +16,7 @@ And(/^I can see the iframe$/) do
       counter = counter + 1
     end
 
-    if iphone_35in?
+    if iphone_35in? || iphone_6_plus?
       scroll(page.query_str, :down)
       step_pause
     end

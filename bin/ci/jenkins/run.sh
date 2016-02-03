@@ -10,5 +10,5 @@ bin/ci/install-keychain.sh
 (cd CalWebViewApp; make clean)
 
 bundle exec bin/ci/test-cloud.rb
-bundle exec bin/ci/jenkins/cucumber.rb
+bundle exec bin/ci/jenkins/cucumber.rb --tags ~@pending
 

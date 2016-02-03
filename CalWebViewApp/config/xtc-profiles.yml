@@ -5,7 +5,7 @@ not_sim:     --tags ~@simulator --tags ~@simulator_only
 iphone_only: --tags ~@ipad --tags ~@ipad_only
 ipad_only:   --tags ~@iphone --tags ~@iphone_only
 
-defaults:    -p not_xtc -p not_sim NO_STOP=1
+defaults:    -p not_xtc -p not_sim NO_STOP=1 --tags ~@pending
 
 default:     -p defaults --backtrace
 ci:          -p defaults --tags ~@no_ci

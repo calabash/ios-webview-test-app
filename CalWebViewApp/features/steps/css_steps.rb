@@ -46,8 +46,10 @@ When(/^I touch the internal link with css$/) do
     wait_for(options) do
       !query(qstr).empty?
     end
-    res = touch(qstr)
+    touch(qstr)
   end
+
+  wait_for_none_animating
 end
 
 Then(/^a query for the FAQ with css should succeed$/) do

@@ -10,7 +10,7 @@ Dir.chdir(working_dir) do
 
     Luffa.unix_command("bundle install")
     Luffa.unix_command("make app-cal")
-    Luffa.unix_command("bundle exec cucumber")
+    Luffa.unix_command("bundle exec cucumber --tags ~@pending")
   end
 end
 

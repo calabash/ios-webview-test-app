@@ -30,8 +30,15 @@ Then(/^I can query within the iframe with css for (\d+) "([^"]*)"$/) do |num, no
   page = page(WebViewApp::TabBar).active_page
   res = query(page.query_str("css:'iframe' css:'#{nodeName}'"))
   # Distinguish between a and a w/ href
-  inputs = res.select { |elm| elm['nodeName'].downcase == nodeName.downcase }
-  expect(inputs.count).to be == num.to_i
+  inputs = res.select do |elm|
+    elm['nodeName'].downcase == nodeName.downcase
+  end
+
+  if ipad?
+    expect(inputs.count).to be >= num.to_i
+  else
+    expect(inputs.count).to be == num.to_i
+  end
 end
 
 Then(/^I can query for "([^"]*)" with id "([^"]*)"$/) do |nodeName, el_id|
@@ -56,5 +63,5 @@ end
 Then(/^I should receive confirmation that I've clicked the button$/) do
   page = page(WebViewApp::TabBar).active_page
   res = query(page.query_str("css:'iframe' css:'h2#msg.label.label-success'"))
-  expect(res.count).to be == 1
+  expect(res.count).to be > 0
 end

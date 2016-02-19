@@ -1,17 +1,16 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem 'calabash-cucumber', '>= 0.18', '< 2.0'
-gem "run_loop", "~> 2.0"
-gem 'briar', "~> 2.0"
-gem 'luffa', '~> 1.0', '>= 1.0.2'
+gem "calabash-cucumber", ">= 0.18.1", "< 2.0"
+gem "briar", "~> 2.0"
+gem "luffa", "~> 1.0", ">= 1.0.2"
 gem "xamarin-test-cloud", "2.0.0.pre2"
 
 # Use rspec matchers.
-gem 'rspec', '~> 3.0'
+gem "rspec", "~> 3.0"
 
-gem 'xcpretty', '~> 0.1'
-gem 'rake', '~> 10.3'
-gem 'bundler', '~> 1.6'
+gem "xcpretty", "~> 0.1"
+gem "rake", "~> 10.3"
+gem "bundler", "~> 1.6"
 gem "travis", ">= 1.8.1", "< 2.0"
-gem 'pry'
-gem 'pry-nav'
+gem "pry"
+gem "pry-nav"

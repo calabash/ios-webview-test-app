@@ -227,17 +227,8 @@ typedef enum : NSUInteger {
     UIView<FLWebViewProvider> *webView = self.webView;
     [self.view addSubview:webView];
 
-    // http://www.openradar.me/radar?id=5839348817723392
-    // WKWebKit cannot load .html from a file on iOS Devices.
-
-#if TARGET_IPHONE_SIMULATOR
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"page"
-                                                     ofType:@"html"];
-    NSURL *url = [NSURL fileURLWithPath:path];
-#else
-    NSString *page = @"https://cdn.rawgit.com/calabash/ios-webview-test-app/master/CalWebViewApp/CalWebViewApp/page.html";
+    NSString *page = @"https://calabash-ci.macminicolo.net/CalWebViewApp/page.html";
     NSURL *url = [NSURL URLWithString:page];
-#endif
 
     [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
   }

@@ -42,7 +42,7 @@ end
 When(/^I touch the internal link with css$/) do
   page(WebViewApp::TabBar).with_active_page do |page|
     options = wait_options('Internal Link')
-    qstr = page.query_str("css:'a#internal'")
+    qstr = page.query_str("css:'a#internal-link'")
     wait_for(options) do
       !query(qstr).empty?
     end
@@ -56,7 +56,7 @@ Then(/^a query for the FAQ with css should succeed$/) do
   page = page(WebViewApp::TabBar).active_page
   options = wait_options('FAQ List')
   wait_for(options) do
-    !query(page.query_str("css:'ul#faq'")).empty?
+    !query(page.query_str("css:'ul#faq-list'")).empty?
   end
 end
 

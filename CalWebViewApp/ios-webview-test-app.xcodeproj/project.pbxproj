@@ -40,8 +40,6 @@
 		F56E5A4F1AC5914A005D7D0C /* FLWebViewLICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = F56E5A4B1AC55E1F005D7D0C /* FLWebViewLICENSE.md */; };
 		F56E5A511AC59583005D7D0C /* GlyphishLICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = F56E5A501AC59579005D7D0C /* GlyphishLICENSE.md */; };
 		F56E5A521AC59588005D7D0C /* GlyphishLICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = F56E5A501AC59579005D7D0C /* GlyphishLICENSE.md */; };
-		F56E5A541AC59786005D7D0C /* page.html in Resources */ = {isa = PBXBuildFile; fileRef = F56E5A531AC59779005D7D0C /* page.html */; };
-		F56E5A551AC5978B005D7D0C /* page.html in Resources */ = {isa = PBXBuildFile; fileRef = F56E5A531AC59779005D7D0C /* page.html */; };
 		a851e37816c4ddd975adbf58 /* XamUIWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BFB281987EF8700299AEF /* XamUIWebViewController.m */; };
 		ab943fbf9d0ac91728d35abe /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F52BFB131987EF8700299AEF /* UIKit.framework */; };
 		cc8f9377c616d69147b3de31 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F52BFB2A1987EF8700299AEF /* Images.xcassets */; };
@@ -297,7 +295,6 @@
 				F52EA33D1C3AB38E00F5862B /* LaunchScreen.xib in Resources */,
 				F56E5A4E1AC59144005D7D0C /* FLWebViewLICENSE.md in Resources */,
 				F56E5A521AC59588005D7D0C /* GlyphishLICENSE.md in Resources */,
-				F56E5A541AC59786005D7D0C /* page.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,7 +308,6 @@
 				F52EA33C1C3AB38E00F5862B /* LaunchScreen.xib in Resources */,
 				F56E5A511AC59583005D7D0C /* GlyphishLICENSE.md in Resources */,
 				F56E5A4F1AC5914A005D7D0C /* FLWebViewLICENSE.md in Resources */,
-				F56E5A551AC5978B005D7D0C /* page.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

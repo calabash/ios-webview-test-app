@@ -7,15 +7,15 @@ Feature: XPATH API
     Given I am looking at the UIWebView tab
     And I can see the h1 header with xpath
     Then I can query for hrefs with xpath
-    And I can query for the body with xpath
     When I query with xpath I should see at least 1 unordered lists
+    And I can query for the body with xpath
 
   Scenario: Query WKWebView with xpath
     Given I am looking at the WKWebView tab
     And I can see the h1 header with xpath
     Then I can query for hrefs with xpath
-    And I can query for the body with xpath
     When I query with xpath I should see at least 1 unordered lists
+    And I can query for the body with xpath
 
   Scenario: Query UIWebView for li with id using xpath
     Given I am looking at the UIWebView tab

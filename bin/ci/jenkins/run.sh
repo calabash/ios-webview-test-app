@@ -1,5 +1,17 @@
 #!/usr/bin/env bash
 
+set -e
+
+# Install page.hmtl and iframe.html
+IFRAME_SOURCE="CalWebViewApp/CalWebViewApp/iframe.html"
+PAGE_SOURCE="CalWebViewApp/CalWebViewApp/page.html"
+
+IFRAME_TARGET="/Library/Server/Web/Data/Sites/Default/CalWebViewApp/iframe.html"
+PAGE_TARGET="/Library/Server/Web/Data/Sites/Default/CalWebViewApp/page.html"
+
+cp "${IFRAME_SOURCE}" "${IFRAME_TARGET}"
+cp "${PAGE_SOURCE}" "${PAGE_TARGET}"
+
 bundle update
 
 bin/ci/install-keychain.sh

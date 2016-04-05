@@ -7,6 +7,7 @@ gem "xamarin-test-cloud", "2.0.0.pre2"
 
 # Use rspec matchers.
 gem "rspec", "~> 3.0"
+gem "cucumber", "~> 2.0"
 
 gem "xcpretty", "~> 0.1"
 gem "rake", "~> 10.3"

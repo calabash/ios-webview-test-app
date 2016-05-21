@@ -8,15 +8,11 @@
 #
 # Uncomment this line and update it with the correct credentials.
 # CODE_SIGN_IDENTITY="iPhone Developer: Person B (8<snip>F)"
-CODE_SIGN_IDENTITY="iPhone Developer: Joshua Moody (8QEQJFT59F)"
 
 set -e
-
 if [ "${CONFIGURATION}" = "Debug" ]; then
-  cp "${SRCROOT}/libCalabashDyn.dylib" "${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}/libCalabashDyn.dylib"
-  cp "${SRCROOT}/libCalabashDynSim.dylib" "${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}/libCalabashDynSim.dylib"
+  cp "${SRCROOT}/libCalabashDynFAT.dylib" "${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}/libCalabashDynFAT.dylib"
   if [ -n "${CODE_SIGN_IDENTITY}" ]; then
-    xcrun codesign -fs "${CODE_SIGN_IDENTITY}" "${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}/libCalabashDyn.dylib"
-  fi
+    xcrun codesign -fs "${CODE_SIGN_IDENTITY}" "${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}/libCalabashDynFAT.dylib"
 fi
 

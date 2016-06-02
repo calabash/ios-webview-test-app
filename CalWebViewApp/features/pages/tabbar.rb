@@ -46,6 +46,8 @@ module WebViewApp
 
         if RunLoop::Environment.xtc?
           timeout = 45
+        elsif RunLoop::Environment.travis?
+          timeout = 60
         elsif RunLoop::Environment.ci?
           timeout = 45
         else

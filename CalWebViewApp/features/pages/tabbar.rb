@@ -44,12 +44,14 @@ module WebViewApp
       with_active_page do |page|
         qstr = page.query_str
 
-        if RunLoop::Environment.ci? ||
-            RunLoop::Environment.xtc?
+        if RunLoop::Environment.xtc?
+          timeout = 45
+        elsif RunLoop::Environment.ci?
           timeout = 30
         else
           timeout = 15
         end
+
         options = wait_options('Waiting for page to load',
                                {:timeout => timeout})
         wait_for(options) do

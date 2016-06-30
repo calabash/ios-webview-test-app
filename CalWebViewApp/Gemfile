@@ -1,10 +1,9 @@
 source "https://rubygems.org"
 
-gem "calabash-cucumber", "0.19.1"
+gem "calabash-cucumber", "0.19.2"
 gem "briar", "~> 2.0"
 gem "luffa", "~> 1.0", ">= 1.0.2"
-gem "xamarin-test-cloud", "2.0.0.pre5"
-gem "run_loop", "2.1.2"
+gem "xamarin-test-cloud", "2.0.0"
 
 # Use rspec matchers.
 gem "rspec", "~> 3.0"

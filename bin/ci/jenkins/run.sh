@@ -12,6 +12,10 @@ PAGE_TARGET="/Library/Server/Web/Data/Sites/Default/CalWebViewApp/page.html"
 cp "${IFRAME_SOURCE}" "${IFRAME_TARGET}"
 cp "${PAGE_SOURCE}" "${PAGE_TARGET}"
 
+gem update --system
+gem uninstall -Vax --force --no-abort-on-dependent calabash-cucumber
+gem uninstall -Vax --force --no-abort-on-dependent run_loop
+
 bundle update
 
 bin/ci/install-keychain.sh

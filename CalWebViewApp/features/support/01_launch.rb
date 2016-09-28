@@ -217,6 +217,18 @@ Before("@german") do
   Calabash::Launchctl.instance.reset_simulator_lang_and_locale
 end
 
+Before("@restart") do
+  if Calabash::Launchctl.instance.device.simulator?
+    Calabash::Launchctl.instance.shutdown(self)
+  end
+end
+
+After("@restart_after") do
+  if Calabash::Launchctl.instance.device.simulator?
+    Calabash::Launchctl.instance.shutdown(self)
+  end
+end
+
 Before("@reset_app_btw_scenarios") do
   if xamarin_test_cloud?
     ENV["RESET_BETWEEN_SCENARIOS"] = "1"

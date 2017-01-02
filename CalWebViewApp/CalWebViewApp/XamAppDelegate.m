@@ -1,12 +1,15 @@
 #import "XamAppDelegate.h"
 #import "XamUIWebViewController.h"
 #import "XamWKWebViewController.h"
+#import "XamSafariWebViewController.h"
 
 #if LOAD_CALABASH_DYLIB
 #import <dlfcn.h>
 #endif
 
 @implementation XamAppDelegate
+
+int tabIndex = 0;
 
 #if LOAD_CALABASH_DYLIB
 - (void) loadCalabashDylib {
@@ -38,11 +41,15 @@
   
   XamUIWebViewController *firstController = [XamUIWebViewController new];
   XamWKWebViewController *secondViewController = [XamWKWebViewController new];
+  UIViewController *thirdViewController = [UIViewController new];
+  thirdViewController.title = @"SafariController";
   
   UITabBarController *tabController = [UITabBarController new];
   tabController.tabBar.translucent = NO;
-  tabController.viewControllers = @[firstController, secondViewController];
+  tabController.delegate = self;
 
+  tabController.viewControllers = @[firstController, secondViewController, thirdViewController];
+  tabController.selectedIndex = 0;
   self.window.rootViewController = tabController;
   [self.window makeKeyAndVisible];
 
@@ -51,6 +58,21 @@
 #endif
 
   return YES;
+}
+
+- (void) tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(nonnull UIViewController *)viewController {
+  tabIndex = tabBarController.selectedIndex;
+}
+
+- (void) tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    // Bit of a hack to get SafariViewController working with TabViewController
+    if ([viewController class] != [XamUIWebViewController class] && [viewController class] != [XamWKWebViewController class]) {
+        NSMutableArray *viewArray = tabBarController.viewControllers;
+        XamSafariWebViewController *safariController = [XamSafariWebViewController new];
+        safariController.savedController = [viewArray objectAtIndex:tabIndex];
+        [viewArray replaceObjectAtIndex:2 withObject:safariController];
+        tabBarController.viewControllers = viewArray;
+    }
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application {

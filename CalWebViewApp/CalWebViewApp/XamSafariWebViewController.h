@@ -3,6 +3,4 @@
 
 @interface XamSafariWebViewController : SFSafariViewController <SFSafariViewControllerDelegate>
 
-@property (strong, nonatomic) UIViewController* savedController;
-
 @end

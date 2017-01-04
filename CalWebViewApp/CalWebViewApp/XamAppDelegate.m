@@ -7,9 +7,13 @@
 #import <dlfcn.h>
 #endif
 
-@implementation XamAppDelegate
+@interface XamAppDelegate ()
 
-int tabIndex = 0;
+@property(nonatomic, strong) XamSafariWebViewController *safariController;
+
+@end
+
+@implementation XamAppDelegate
 
 #if LOAD_CALABASH_DYLIB
 - (void) loadCalabashDylib {
@@ -35,15 +39,18 @@ int tabIndex = 0;
 }
 #endif
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   
   XamUIWebViewController *firstController = [XamUIWebViewController new];
   XamWKWebViewController *secondViewController = [XamWKWebViewController new];
   UIViewController *thirdViewController = [UIViewController new];
-  thirdViewController.title = @"SafariController";
-  
+  UIImage *image = [UIImage imageNamed:@"SafariTab"];
+  thirdViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Safari"
+                                                                 image:image
+                                                                   tag:2];
+
+
   UITabBarController *tabController = [UITabBarController new];
   tabController.tabBar.translucent = NO;
   tabController.delegate = self;
@@ -60,21 +67,27 @@ int tabIndex = 0;
   return YES;
 }
 
-- (void) tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(nonnull UIViewController *)viewController {
-  tabIndex = tabBarController.selectedIndex;
+- (BOOL)  tabBarController:(UITabBarController *)tabBarController
+shouldSelectViewController:(nonnull UIViewController *)viewController {
+  return YES;
 }
 
-- (void) tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
-    // Bit of a hack to get SafariViewController working with TabViewController
-    if ([viewController class] != [XamUIWebViewController class] && [viewController class] != [XamWKWebViewController class]) {
-        NSMutableArray *viewArray = tabBarController.viewControllers;
-        XamSafariWebViewController *safariController = [XamSafariWebViewController new];
-        safariController.savedController = [viewArray objectAtIndex:tabIndex];
-        [viewArray replaceObjectAtIndex:2 withObject:safariController];
-        tabBarController.viewControllers = viewArray;
+- (void) tabBarController:(UITabBarController *)tabBarController
+  didSelectViewController:(UIViewController *)viewController {
+  // Hack to display SafariViewController inside a TabViewController
+  if ([viewController class] != [XamUIWebViewController class] &&
+      [viewController class] != [XamWKWebViewController class]) {
+
+    if (!self.safariController) {
+      self.safariController = [XamSafariWebViewController new];
     }
+
+    NSMutableArray *viewArray = [tabBarController.viewControllers mutableCopy];
+    [viewArray replaceObjectAtIndex:2 withObject:self.safariController];
+    tabBarController.viewControllers = viewArray;
+  }
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application {
   /*
    Sent when the application is about to move from active to inactive state.
@@ -117,6 +130,5 @@ int tabIndex = 0;
    See also applicationDidEnterBackground:.
    */
 }
-
 
 @end

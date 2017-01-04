@@ -5,16 +5,21 @@
 #pragma mark - Memory Management
 
 - (instancetype) init {
-    NSString *page = @"https://calabash-ci.macminicolo.net/CalWebViewApp/page.html";
-    NSURL *url = [NSURL URLWithString:page];
-    self = [super initWithURL:url];
-    if (self){
-        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"SafariController"
-                                                        image:NULL
-                                                          tag:0];
-        self.delegate = self;
-    }
-    return self;
+  NSString *page = @"https://calabash-ci.macminicolo.net/CalWebViewApp/page.html";
+  NSURL *url = [NSURL URLWithString:page];
+  self = [super initWithURL:url];
+  if (self) {
+
+    NSString *tabTitle = @"Safari";
+
+    UIImage *image = [UIImage imageNamed:@"SafariTab"];
+    self.tabBarItem = [[UITabBarItem alloc] initWithTitle:tabTitle
+                                                    image:image
+                                                      tag:2];
+
+    self.delegate = self;
+  }
+  return self;
 }
 
 - (void) viewWillLayoutSubviews {
@@ -41,9 +46,8 @@
     [super viewDidDisappear:animated];
 }
 
-- (void) safariViewControllerDidFinish:(SFSafariViewController *)controller {
-    UITabBarController *tabBarController = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-    tabBarController.selectedViewController = _savedController;
+- (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
+
 }
 
 @end

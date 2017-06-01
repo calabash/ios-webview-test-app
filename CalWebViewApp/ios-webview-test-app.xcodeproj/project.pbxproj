@@ -256,6 +256,16 @@
 				CLASSPREFIX = Xam;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Xamarin;
+				TargetAttributes = {
+					F52BFB0B1987EF8700299AEF = {
+						DevelopmentTeam = FYD86LA7RE;
+						ProvisioningStyle = Manual;
+					};
+					aa8f030ac9159ee56ef3af27 = {
+						DevelopmentTeam = FYD86LA7RE;
+						ProvisioningStyle = Manual;
+					};
+				};
 			};
 			buildConfigurationList = F52BFB071987EF8700299AEF /* Build configuration list for PBXProject "ios-webview-test-app" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -413,6 +423,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = FYD86LA7RE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -433,8 +444,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "sh.calaba.CalWebView-cal";
 				PRODUCT_NAME = "CalWebView-cal";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "47148def-f37f-4dd9-888a-ce659584fb5b";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE_SPECIFIER = CalabashWildcard;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -529,6 +541,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = FYD86LA7RE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -543,7 +556,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = sh.calaba.CalWebView;
 				PRODUCT_NAME = CalWebView;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "47148def-f37f-4dd9-888a-ce659584fb5b";
+				PROVISIONING_PROFILE_SPECIFIER = CalabashWildcard;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -555,6 +569,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = FYD86LA7RE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -568,7 +583,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = sh.calaba.CalWebView;
 				PRODUCT_NAME = CalWebView;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "47148def-f37f-4dd9-888a-ce659584fb5b";
+				PROVISIONING_PROFILE_SPECIFIER = CalabashWildcard;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -580,6 +596,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = FYD86LA7RE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -600,8 +617,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "sh.calaba.CalWebView-cal";
 				PRODUCT_NAME = "CalWebView-cal";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "47148def-f37f-4dd9-888a-ce659584fb5b";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE_SPECIFIER = CalabashWildcard;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;

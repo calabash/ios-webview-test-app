@@ -254,7 +254,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = Xam;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = Xamarin;
 				TargetAttributes = {
 					F52BFB0B1987EF8700299AEF = {

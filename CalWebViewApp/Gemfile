@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 
-gem "calabash-cucumber", "0.20.4"
+gem "bundler", "1.14.6"
+gem "calabash-cucumber", :github => "calabash/calabash-ios", :branch => "develop"
 gem "run_loop", :github => "calabash/run_loop", :branch => "develop"
 gem "briar", "~> 2.0"
 gem "luffa", "~> 1.0", ">= 1.0.2"

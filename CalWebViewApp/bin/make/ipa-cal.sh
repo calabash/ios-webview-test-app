@@ -1,33 +1,12 @@
 #!/usr/bin/env bash
 
-function info {
-  echo "$(tput setaf 2)INFO: $1$(tput sgr0)"
-}
+source bin/log.sh
+source bin/ditto.sh
+source bin/simctl.sh
 
-function error {
-  echo "$(tput setaf 1)ERROR: $1$(tput sgr0)"
-}
+ensure_valid_core_sim_service
 
-function banner {
-  echo ""
-  echo "$(tput setaf 5)######## $1 #######$(tput sgr0)"
-  echo ""
-}
-
-function ditto_or_exit {
-  ditto "${1}" "${2}"
-  if [ "$?" != 0 ]; then
-    error "Could not copy:"
-    error "  source: ${1}"
-    error "  target: ${2}"
-    if [ ! -e "${1}" ]; then
-      error "The source file does not exist"
-      error "Did a previous xcodebuild step fail?"
-    fi
-    error "Exiting 1"
-    exit 1
-  fi
-}
+set -e
 
 banner "Preparing"
 
@@ -121,14 +100,10 @@ mkdir -p "${PAYLOAD_DIR}"
 
 ditto_or_exit "${INSTALLED_APP}" "${PAYLOAD_DIR}/${APP}"
 
-xcrun ditto -ck --rsrc --sequesterRsrc --keepParent \
-  "${PAYLOAD_DIR}" \
-  "${INSTALLED_IPA}"
+ditto_to_zip "${PAYLOAD_DIR}" "${INSTALLED_IPA}"
 info "Installed ${INSTALLED_IPA}"
 
-xcrun ditto -ck --rsrc --sequesterRsrc --keepParent \
-  "${INSTALLED_APP}" \
-  "${INSTALLED_APP}.zip"
+ditto_to_zip "${INSTALLED_APP}" "${INSTALLED_APP}.zip"
 info "Installed ${INSTALLED_APP}.zip"
 
 ditto_or_exit "${BUILD_PRODUCTS_DSYM}" "${INSTALLED_DSYM}"
@@ -157,6 +132,24 @@ info "Copied ${IPA} to ${XTC_DIR}/"
 
 ditto_or_exit "${INSTALLED_DSYM}" "${XTC_DIR}/${DSYM}"
 info "Copied ${DSYM} to ${XTC_DIR}/"
+
+rm -rf "${XTC_DIR}/.xtc"
+if [ -d ".xtc" ]; then
+  ditto_or_exit ".xtc" "${XTC_DIR}/.xtc"
+  info "Copied .xtc to ${XTC_DIR}/.xtc"
+else
+  info "No .xtc directory; skipping copy"
+fi
+
+cat >"${XTC_DIR}/Gemfile" <<EOF
+source "https://rubygems.org"
+
+gem "calabash-cucumber"
+EOF
+
+cat "config/xtc-other-gems.rb" >> "${XTC_DIR}/Gemfile"
+info "Wrote ${XTC_DIR}/Gemfile with contents"
+cat "${XTC_DIR}/Gemfile"
 
 info "Done!"
 

@@ -218,13 +218,17 @@ Before("@german") do
 end
 
 Before("@restart") do
-  if Calabash::Launchctl.instance.device.simulator?
+  if RunLoop::Environment.xtc?
+    Calabash::Launchctl.instance.shutdown(self)
+  elsif Calabash::Launchctl.instance.device.simulator?
     Calabash::Launchctl.instance.shutdown(self)
   end
 end
 
 After("@restart_after") do
-  if Calabash::Launchctl.instance.device.simulator?
+	if RunLoop::Environment.xtc?
+    Calabash::Launchctl.instance.shutdown(self)
+  elsif Calabash::Launchctl.instance.device.simulator?
     Calabash::Launchctl.instance.shutdown(self)
   end
 end
@@ -268,7 +272,7 @@ Before do |scenario|
     options = Calabash::Launchctl.instance.environment
     options[:args] = [
       "-AppleLanguages", "(#{Calabash::Launchctl.instance.app_lang})",
-      "-AppleLocale", Calabash::Launchctl.instance.app_locale,
+      "-AppleLocale", Calabash::Launchctl.instance.app_locale
     ]
 
     if Calabash::Launchctl.instance.first_launch
@@ -297,12 +301,18 @@ end
 
 After do |scenario|
   case :debug
-    when :default
+  when :pry
+    if RunLoop::Environment.xtc?
       Calabash::Launchctl.instance.shutdown(self)
-    when :debug
-      Calabash::Launchctl.instance.maybe_exit_cucumber_on_failure(scenario, self)
     else
-      RunLoop.log_error("Unknown action in After hook")
-      Calabash::Launchctl.instance.maybe_exit_cucumber_on_failure(scenario, self)
+      binding.pry
+    end
+  when :default
+    Calabash::Launchctl.instance.shutdown(self)
+  when :debug
+    Calabash::Launchctl.instance.maybe_exit_cucumber_on_failure(scenario, self)
+  else
+    RunLoop.log_error("Unknown action in After hook")
+    Calabash::Launchctl.instance.maybe_exit_cucumber_on_failure(scenario, self)
   end
 end

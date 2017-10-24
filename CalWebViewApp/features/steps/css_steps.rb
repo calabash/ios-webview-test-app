@@ -50,6 +50,7 @@ When(/^I touch the internal link with css$/) do
   end
 
   wait_for_none_animating
+  sleep(1.0)
 end
 
 Then(/^a query for the FAQ with css should succeed$/) do

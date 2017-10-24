@@ -10,24 +10,20 @@ set -e
 
 banner "Preparing"
 
-if [ "${XCPRETTY}" = "0" ]; then
-  USE_XCPRETTY=
-else
-  USE_XCPRETTY=`which xcpretty | tr -d '\n'`
-fi
-
-if [ ! -z ${USE_XCPRETTY} ]; then
+hash xcpretty 2>/dev/null
+if [ $? -eq 0 ] && [ "${XCPRETTY}" != "0" ]; then
   XC_PIPE='xcpretty -c'
 else
   XC_PIPE='cat'
 fi
+
+info "Will pipe xcodebuild to ${XC_PIPE}"
 
 XC_TARGET="CalWebView-cal"
 XC_PROJECT="ios-webview-test-app.xcodeproj"
 XC_SCHEME="${XC_TARGET}"
 XC_CONFIG=Debug
 XC_BUILD_DIR="${PWD}/build/ipa-cal"
-
 
 APP="${XC_TARGET}.app"
 DSYM="${APP}.dSYM"
@@ -97,17 +93,11 @@ install_with_ditto "${BUILD_PRODUCTS_APP}" "${INSTALLED_APP}"
 PAYLOAD_DIR="${INSTALL_DIR}/Payload"
 mkdir -p "${PAYLOAD_DIR}"
 
-ditto_or_exit "${INSTALLED_APP}" "${PAYLOAD_DIR}/${APP}"
-
-ditto_to_zip "${PAYLOAD_DIR}" "${INSTALLED_IPA}"
-
-install_with_ditto "${INSTALLED_IPA}" "${INSTALL_DIR}/CalWebView-device.ipa"
-
-ditto_to_zip "${INSTALLED_APP}" "${INSTALL_DIR}/CalWebView-device.app.zip"
+install_with_ditto "${INSTALLED_APP}" "${PAYLOAD_DIR}/${APP}"
+zip_with_ditto "${PAYLOAD_DIR}" "${INSTALLED_IPA}"
+zip_with_ditto "${INSTALLED_APP}" "${INSTALLED_APP}.zip"
 
 install_with_ditto "${BUILD_PRODUCTS_DSYM}" "${INSTALLED_DSYM}"
-install_with_ditto "${BUILD_PRODUCTS_DSYM}" \
-  "${INSTALL_DIR}/CalWebView-device.app.dSYM"
 
 banner "Code Signing Details"
 

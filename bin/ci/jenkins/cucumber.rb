@@ -13,6 +13,14 @@ working_dir = File.expand_path(File.join(File.dirname(__FILE__),
                                          "CalWebViewApp"))
 app = File.join(working_dir, "Products", "app-cal", "CalWebView-cal.app")
 
+def select_sim_by_name(simctl, regex)
+  simctl.simulators.select do |sim|
+    sim.name[/#{regex}/]
+  end.sort_by do |sim|
+    sim.version.to_s
+  end.last
+end
+
 Dir.chdir working_dir do
 
   Bundler.with_clean_env do
@@ -22,54 +30,54 @@ Dir.chdir working_dir do
     FileUtils.mkdir_p("reports")
 
     xcode = RunLoop::Xcode.new
-    xcode_version = xcode.version
-    sim_major = xcode_version.major + 2
-    sim_minor = xcode_version.minor
+    simctl = RunLoop::Simctl.new
 
-    sim_version = RunLoop::Version.new("#{sim_major}.#{sim_minor}")
+    ipad_pro_12_9 = select_sim_by_name(simctl, "12.9")
+    ipad_pro_10_5 = select_sim_by_name(simctl, "10.5")
+    ipad_pro_9_7 = select_sim_by_name(simctl, "9.7")
+    ipad_air = select_sim_by_name(simctl, "iPad Air")
+    iphone_se = select_sim_by_name(simctl, "SE")
+    iphone_6_ff = select_sim_by_name(simctl,
+                                     "iPhone #{xcode.version.major - 2}")
+    iphone_6_plus_ff = select_sim_by_name(simctl,
+                                          "iPhone #{xcode.version.major - 2} Plus")
 
     devices = {
-        :air => 'iPad Air',
-        :iphone4s => 'iPhone 4s',
-        :iphone5s => 'iPhone 5s',
-        :iphone6 => 'iPhone 6',
+      ipad_pro_12_9: ipad_pro_12_9,
+      ipad_pro_10_5: ipad_pro_10_5,
+      ipad_pro_9_7: ipad_pro_9_7,
+      ipad_air: ipad_air,
+      iphone_se: iphone_se,
+      iphone_6_form_factor: iphone_6_ff,
+      iphone_6_plus_form_factor: iphone_6_plus_ff
     }
+
+    devices.delete_if { |k, v| v.nil? }
 
     FileUtils.rm_rf("reports")
     FileUtils.mkdir("reports")
 
-    if ENV["JENKINS_HOME"]
-      devices[:iphone6sPlus] = 'iPhone 6s Plus'
-    else
-      devices[:iphone6plus] = 'iPhone 6 Plus'
-    end
-
     RunLoop::CoreSimulator.terminate_core_simulator_processes
-
-    simulators = RunLoop::SimControl.new.simulators
 
     passed_sims = []
     failed_sims = []
-    devices.each do |key, name|
+    devices.each do |key, simulator|
       cucumber_cmd = "bundle exec cucumber -p default -f json -o reports/#{key}.json -f junit -o reports/#{key} #{cucumber_args}"
 
-      match = simulators.find do |sim|
-        sim.name == name && sim.version == sim_version
-      end
-
       env_vars = {
-        "DEVICE_TARGET" => match.udid,
+        "DEVICE_TARGET" => simulator.udid,
         "APP" => app
       }
 
       RunLoop::CoreSimulator.terminate_core_simulator_processes
 
-      exit_code = Luffa.unix_command(cucumber_cmd, {:exit_on_nonzero_status => false,
-                                                    :env_vars => env_vars})
+      exit_code = Luffa.unix_command(cucumber_cmd,
+                                     {:exit_on_nonzero_status => false,
+                                      :env_vars => env_vars})
       if exit_code == 0
-        passed_sims << name
+        passed_sims << simulator.to_s
       else
-        failed_sims << name
+        failed_sims << simulator.to_s
       end
     end
 
@@ -107,4 +115,3 @@ Dir.chdir working_dir do
     end
   end
 end
-

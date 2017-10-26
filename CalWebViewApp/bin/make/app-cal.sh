@@ -97,8 +97,7 @@ fi
 banner "Installing"
 
 install_with_ditto "${BUILD_PRODUCTS_APP}" "${INSTALLED_APP}"
-
-ditto_to_zip "${INSTALLED_APP}" "${INSTALL_DIR}/CalWebView-sim.app.zip"
+zip_with_ditto "${INSTALLED_APP}" "${INSTALL_DIR}/CalWebView-sim.app.zip"
 
 install_with_ditto "${BUILD_PRODUCTS_DSYM}" "${INSTALLED_DSYM}"
 install_with_ditto "${BUILD_PRODUCTS_DSYM}" \

@@ -2,6 +2,7 @@
 #import "XamUIWebViewController.h"
 #import "XamWKWebViewController.h"
 #import "XamSafariWebViewController.h"
+#import "MBFingerTipWindow.h"
 
 #if LOAD_CALABASH_DYLIB
 #import <dlfcn.h>
@@ -14,6 +15,18 @@
 @end
 
 @implementation XamAppDelegate
+
+- (UIWindow *)window {
+  if (!_window) {
+    MBFingerTipWindow *ftWindow = [[MBFingerTipWindow alloc]
+                                   initWithFrame:[[UIScreen mainScreen] bounds]];
+    NSArray *arguments = [[NSProcessInfo processInfo] arguments];
+    ftWindow.alwaysShowTouches = [arguments containsObject:@"FINGERTIPS"];
+    _window = ftWindow;
+  }
+  return _window;
+}
+
 
 #if LOAD_CALABASH_DYLIB
 - (void) loadCalabashDylib {
@@ -40,8 +53,7 @@
 #endif
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-  
+
   XamUIWebViewController *firstController = [XamUIWebViewController new];
   XamWKWebViewController *secondViewController = [XamWKWebViewController new];
   UIViewController *thirdViewController = [UIViewController new];

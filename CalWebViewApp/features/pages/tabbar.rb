@@ -45,13 +45,11 @@ module WebViewApp
         qstr = page.query_str
 
         if RunLoop::Environment.xtc?
-          timeout = 45
-        elsif RunLoop::Environment.travis?
-          timeout = 60
+          timeout = 240
         elsif RunLoop::Environment.ci?
-          timeout = 45
+          timeout = 60
         else
-          timeout = 15
+          timeout = 30
         end
 
         options = wait_options('Waiting for page to load',

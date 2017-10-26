@@ -17,7 +17,7 @@ if !device_set || device_set == ""
 end
 
 if !device_set || device_set == ""
-  device_set = ["890e6a17", "f254524b", "f6b33ead", "2c635bdb"].sample
+  device_set = ["93f535c0", "23adea86", "2e4535e2", "28a2c070"].sample
 end
 
 Luffa.unix_command("bin/ci/make-ipa.sh")
@@ -27,4 +27,3 @@ Dir.chdir("CalWebViewApp") do
     Luffa.unix_command("bundle exec briar xtc #{device_set}")
   end
 end
-

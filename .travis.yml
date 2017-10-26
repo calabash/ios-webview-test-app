@@ -14,9 +14,7 @@ script:
 notifications:
   email:
     recipients:
-    - joshua.moody@xamarin.com
-    - chris.fuentes@xamarin.com
-    - tobias.roikjer@xamarin.com
+    - josmoo@microsoft.com
     on_success: change
     on_failure: always
   slack:

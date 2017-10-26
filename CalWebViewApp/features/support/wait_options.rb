@@ -37,12 +37,20 @@ module WebViewApp
     # pause cucumber execution for a moment; after a touch for example
     # @param [Float] duration (0.4) time to sleep
     def step_pause(duration=nil)
-      sleep((duration || ENV['STEP_PAUSE'] || 0.4).to_f)
+      if (RunLoop::Environment.xtc?)
+        sleep(1.0)
+      else
+        sleep((duration || ENV['STEP_PAUSE'] || 0.4).to_f)
+      end
     end
 
     # how long to wait for a view before failing
     def wait_timeout
-      (ENV['WAIT_TIMEOUT'] || 8.0).to_f
+      if (RunLoop::Environment.xtc?)
+        20.0
+      else
+        (ENV['WAIT_TIMEOUT'] || 8.0).to_f
+      end
     end
 
     # how often to retry querying for a view
@@ -52,7 +60,7 @@ module WebViewApp
 
     # the time to wait after a wait condition evals to +true+
     def wait_step_pause
-      (ENV['POST_TIMEOUT'] || 0.0).to_f
+      (ENV['POST_TIMEOUT'] || 0.2).to_f
     end
   end
 end

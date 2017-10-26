@@ -22,9 +22,17 @@ function install_with_ditto {
   info "Installed ${2}"
 }
 
-function ditto_to_zip {
+function zip_with_ditto {
   xcrun ditto \
   -ck --rsrc --sequesterRsrc --keepParent \
+  "${1}" \
+  "${2}"
+  info "Installed ${2}"
+}
+
+function unzip_with_ditto {
+  xcrun ditto \
+  -xk --rsrc --sequesterRsrc \
   "${1}" \
   "${2}"
   info "Installed ${2}"

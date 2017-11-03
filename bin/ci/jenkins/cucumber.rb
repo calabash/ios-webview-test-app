@@ -17,7 +17,7 @@ def select_sim_by_name(simctl, regex)
   simctl.simulators.select do |sim|
     sim.name[/#{regex}/]
   end.sort_by do |sim|
-    sim.version.to_s
+    sim.version
   end.last
 end
 
@@ -38,9 +38,9 @@ Dir.chdir working_dir do
     ipad_air = select_sim_by_name(simctl, "iPad Air")
     iphone_se = select_sim_by_name(simctl, "SE")
     iphone_6_ff = select_sim_by_name(simctl,
-                                     "iPhone #{xcode.version.major - 2}")
+                                     "iPhone #{xcode.version.major - 1}")
     iphone_6_plus_ff = select_sim_by_name(simctl,
-                                          "iPhone #{xcode.version.major - 2} Plus")
+                                          "iPhone #{xcode.version.major - 1} Plus")
 
     devices = {
       ipad_pro_12_9: ipad_pro_12_9,

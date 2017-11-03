@@ -15,7 +15,7 @@ app = File.join(working_dir, "Products", "app-cal", "CalWebView-cal.app")
 
 def select_sim_by_name(simctl, regex)
   simctl.simulators.select do |sim|
-    sim.name[/#{regex}/]
+    sim.to_s[/#{regex} \(/]
   end.sort_by do |sim|
     sim.version
   end.last
@@ -32,10 +32,10 @@ Dir.chdir working_dir do
     xcode = RunLoop::Xcode.new
     simctl = RunLoop::Simctl.new
 
-    ipad_pro_12_9 = select_sim_by_name(simctl, "12.9")
-    ipad_pro_10_5 = select_sim_by_name(simctl, "10.5")
-    ipad_pro_9_7 = select_sim_by_name(simctl, "9.7")
-    ipad_air = select_sim_by_name(simctl, "iPad Air")
+    ipad_pro_12_9 = select_sim_by_name(simctl, "12\\.9[ -]inch\\)")
+    ipad_pro_10_5 = select_sim_by_name(simctl, "10\\.5[ -]inch\\)")
+    ipad_pro_9_7 = select_sim_by_name(simctl, "9\\.7[ -]inch\\)")
+    ipad_air = select_sim_by_name(simctl, "iPad Air 2")
     iphone_se = select_sim_by_name(simctl, "SE")
     iphone_6_ff = select_sim_by_name(simctl,
                                      "iPhone #{xcode.version.major - 1}")

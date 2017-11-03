@@ -300,7 +300,7 @@ After("@german") do
 end
 
 After do |scenario|
-  case :debug
+  case :default
   when :pry
     if RunLoop::Environment.xtc?
       Calabash::Launchctl.instance.shutdown(self)

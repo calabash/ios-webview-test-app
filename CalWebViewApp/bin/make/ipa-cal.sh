@@ -99,6 +99,10 @@ zip_with_ditto "${INSTALLED_APP}" "${INSTALLED_APP}.zip"
 
 install_with_ditto "${BUILD_PRODUCTS_DSYM}" "${INSTALLED_DSYM}"
 
+install_with_ditto "${INSTALLED_DSYM}" "${INSTALL_DIR}/CalWebView-device.app.dSYM"
+install_with_ditto "${INSTALLED_APP}.zip" "${INSTALL_DIR}/CalWebView-device.app.zip"
+install_with_ditto "${INSTALLED_IPA}" "${INSTALL_DIR}/CalWebView-device.ipa"
+
 banner "Code Signing Details"
 
 DETAILS=`xcrun codesign --display --verbose=2 ${INSTALLED_APP} 2>&1`

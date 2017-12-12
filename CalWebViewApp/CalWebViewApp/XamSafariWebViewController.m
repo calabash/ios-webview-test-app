@@ -5,7 +5,7 @@
 #pragma mark - Memory Management
 
 - (instancetype) init {
-  NSString *page = @"https://calabash-ci.macminicolo.net/CalWebViewApp/page.html";
+  NSString *page = @"https://calabash-ci.xyz/CalWebViewApp/page.html";
   NSURL *url = [NSURL URLWithString:page];
   self = [super initWithURL:url];
   if (self) {

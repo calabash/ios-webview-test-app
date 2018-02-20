@@ -41,6 +41,9 @@ And(/^I can see the green line with (css|xpath)$/) do |api|
       step_pause
       counter = counter + 1
     end
+
+    # Pause test to allow scrolling to finish
+    sleep(1.0)
   end
 end
 
@@ -81,5 +84,7 @@ And(/^I can see the (first|last) name text input field$/) do |input_field_id|
       scroll(page.query_str, :down)
       step_pause
     end
+
+    sleep 1.0
   end
 end

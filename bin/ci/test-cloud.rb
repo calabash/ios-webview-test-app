@@ -17,7 +17,7 @@ if !device_set || device_set == ""
 end
 
 if !device_set || device_set == ""
-  device_set = ["93f535c0", "23adea86", "2e4535e2", "28a2c070"].sample
+  device_set = "83b3ffd7" 
 end
 
 Luffa.unix_command("bin/ci/make-ipa.sh")

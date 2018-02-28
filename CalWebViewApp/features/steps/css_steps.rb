@@ -57,6 +57,7 @@ Then(/^a query for the FAQ with css should succeed$/) do
   page = page(WebViewApp::TabBar).active_page
   options = wait_options('FAQ List')
   wait_for(options) do
+    scroll("scrollView", :down)
     !query(page.query_str("css:'ul#faq-list'")).empty?
   end
 end

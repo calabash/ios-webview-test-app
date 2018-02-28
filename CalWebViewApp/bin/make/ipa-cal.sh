@@ -6,8 +6,6 @@ source bin/simctl.sh
 
 ensure_valid_core_sim_service
 
-set -e
-
 banner "Preparing"
 
 hash xcpretty 2>/dev/null
@@ -17,7 +15,9 @@ else
   XC_PIPE='cat'
 fi
 
-info "Will pipe xcodebuild to ${XC_PIPE}"
+info "Will pipe xcodebuild to: ${XC_PIPE}"
+
+set -e -o pipefail
 
 XC_TARGET="CalWebView-cal"
 XC_PROJECT="ios-webview-test-app.xcodeproj"
@@ -48,9 +48,12 @@ rm -rf "${BUILD_PRODUCTS_DSYM}"
 
 info "Prepared archive directory"
 
-banner "Building ${IPA}"
+if [ "${PREPARE_XTC_ONLY}" != "1" ]; then
+  rm -rf "${INSTALL_DIR}"
+  mkdir -p "${INSTALL_DIR}"
 
-if [ -z "${CODE_SIGN_IDENTITY}" ]; then
+  banner "Building ${IPA}"
+
   COMMAND_LINE_BUILD=1 xcrun xcodebuild \
     -SYMROOT="${XC_BUILD_DIR}" \
     -derivedDataPath "${XC_BUILD_DIR}" \
@@ -62,52 +65,39 @@ if [ -z "${CODE_SIGN_IDENTITY}" ]; then
     VALID_ARCHS="armv7 armv7s arm64" \
     ONLY_ACTIVE_ARCH=NO \
     build | $XC_PIPE
-else
-  COMMAND_LINE_BUILD=1 xcrun xcodebuild \
-    CODE_SIGN_IDENTITY="${CODE_SIGN_IDENTITY}" \
-    -SYMROOT="${XC_BUILD_DIR}" \
-    -derivedDataPath "${XC_BUILD_DIR}" \
-    -project "${XC_PROJECT}" \
-    -scheme "${XC_TARGET}" \
-    -configuration "${XC_CONFIG}" \
-    -sdk iphoneos \
-    ARCHS="armv7 armv7s arm64" \
-    VALID_ARCHS="armv7 armv7s arm64" \
-    ONLY_ACTIVE_ARCH=NO \
-    build | $XC_PIPE
+
+  EXIT_CODE=${PIPESTATUS[0]}
+
+  if [ $EXIT_CODE != 0 ]; then
+    error "Building ipa failed."
+    exit $EXIT_CODE
+  else
+    info "Building ipa succeeded."
+  fi
+
+  banner "Installing"
+
+  install_with_ditto "${BUILD_PRODUCTS_APP}" "${INSTALLED_APP}"
+
+  PAYLOAD_DIR="${INSTALL_DIR}/Payload"
+  mkdir -p "${PAYLOAD_DIR}"
+
+  install_with_ditto "${INSTALLED_APP}" "${PAYLOAD_DIR}/${APP}"
+  zip_with_ditto "${PAYLOAD_DIR}" "${INSTALLED_IPA}"
+  zip_with_ditto "${INSTALLED_APP}" "${INSTALLED_APP}.zip"
+
+  install_with_ditto "${BUILD_PRODUCTS_DSYM}" "${INSTALLED_DSYM}"
+
+  install_with_ditto "${INSTALLED_DSYM}" "${INSTALL_DIR}/CalWebView-device.app.dSYM"
+  install_with_ditto "${INSTALLED_APP}.zip" "${INSTALL_DIR}/CalWebView-device.app.zip"
+  install_with_ditto "${INSTALLED_IPA}" "${INSTALL_DIR}/CalWebView-device.ipa"
+
+  banner "Code Signing Details"
+
+  DETAILS=`xcrun codesign --display --verbose=2 ${INSTALLED_APP} 2>&1`
+
+  echo "$(tput setaf 4)$DETAILS$(tput sgr0)"
 fi
-
-EXIT_CODE=${PIPESTATUS[0]}
-
-if [ $EXIT_CODE != 0 ]; then
-  error "Building ipa failed."
-  exit $EXIT_CODE
-else
-  info "Building ipa succeeded."
-fi
-
-banner "Installing"
-
-install_with_ditto "${BUILD_PRODUCTS_APP}" "${INSTALLED_APP}"
-
-PAYLOAD_DIR="${INSTALL_DIR}/Payload"
-mkdir -p "${PAYLOAD_DIR}"
-
-install_with_ditto "${INSTALLED_APP}" "${PAYLOAD_DIR}/${APP}"
-zip_with_ditto "${PAYLOAD_DIR}" "${INSTALLED_IPA}"
-zip_with_ditto "${INSTALLED_APP}" "${INSTALLED_APP}.zip"
-
-install_with_ditto "${BUILD_PRODUCTS_DSYM}" "${INSTALLED_DSYM}"
-
-install_with_ditto "${INSTALLED_DSYM}" "${INSTALL_DIR}/CalWebView-device.app.dSYM"
-install_with_ditto "${INSTALLED_APP}.zip" "${INSTALL_DIR}/CalWebView-device.app.zip"
-install_with_ditto "${INSTALLED_IPA}" "${INSTALL_DIR}/CalWebView-device.ipa"
-
-banner "Code Signing Details"
-
-DETAILS=`xcrun codesign --display --verbose=2 ${INSTALLED_APP} 2>&1`
-
-echo "$(tput setaf 4)$DETAILS$(tput sgr0)"
 
 banner "Preparing for XTC Submit"
 

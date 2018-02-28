@@ -42,6 +42,7 @@ ci-reports
 # xamarin build directory for XTC
 xtc-submit-calabash-embedded
 xtc-submit-calabash-linked
+.xtc-credentials
 
 # Xcode 4+
 *.xcodeproj/*.mode*

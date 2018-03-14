@@ -17,8 +17,10 @@ module WebViewApp
           index = 0
         when :wkwebview
           index = 1
+        when :safariwebview
+          index = 2
         else
-          raise "Expected '#{page_id}' to be one of [:uiwebview, :wkwebview]"
+          raise "Expected '#{page_id}' to be one of [:uiwebview, :wkwebview, :safariwebview]"
       end
 
       qstr = "UITabBarButton index:#{index}"
@@ -72,8 +74,10 @@ module WebViewApp
         page(WebViewApp::UIWebView)
       elsif page_class == 'WKWebView'
         page(WebViewApp::WKWebView)
+      elsif page_class == 'SFSafariView'
+        page(WebViewApp::SafariWebView)
       else
-        raise "Expected page class '#{page_class}' to be one of [UIWebView, WKWebView]"
+        raise "Expected page class '#{page_class}' to be one of [UIWebView, WKWebView, SafariWebView]"
       end
     end
 

@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 #import <SafariServices/SafariServices.h>
 
-@interface XamSafariWebViewController : SFSafariViewController <SFSafariViewControllerDelegate>
+@interface XamSafariWebViewController : UIViewController <SFSafariViewControllerDelegate>
 
 @end

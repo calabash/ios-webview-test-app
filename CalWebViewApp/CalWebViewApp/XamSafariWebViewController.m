@@ -17,6 +17,20 @@
   return self;
 }
 
+#pragma mark - View Life Cycle
+
+- (void) loadView {
+    CGRect frame = [[UIScreen mainScreen] applicationFrame];
+    UIView *view = [[UIView alloc] initWithFrame:frame];
+
+    view.tag = 3030;
+    view.accessibilityIdentifier = @"root";
+
+    view.backgroundColor = [UIColor whiteColor];
+    view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.view = view;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

@@ -17,6 +17,10 @@ Feature: CSS API
     When I query with css I should see at least 1 unordered lists
     Then I can query for the body with css
 
+  Scenario: Query SafariWebView with css
+    Given I am looking at the SafariWebView tab
+    And I can see the h1 header with css
+
   Scenario: Query UIWebView for li with id using css
     Given I am looking at the UIWebView tab
     And I can see the h1 header with css

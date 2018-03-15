@@ -28,6 +28,12 @@ module Calabash
       @first_launch
     end
 
+    def after_action
+      value = ENV["AFTER"]
+      return :default if value.nil? || value.strip == ""
+      value.to_sym
+    end
+
     def shutdown(world)
       @first_launch = true
       world.calabash_exit
@@ -300,7 +306,8 @@ After("@german") do
 end
 
 After do |scenario|
-  case :default
+  after_action = Calabash::Launchctl.instance.after_action
+  case after_action
   when :pry
     if RunLoop::Environment.xtc?
       Calabash::Launchctl.instance.shutdown(self)
@@ -312,7 +319,7 @@ After do |scenario|
   when :debug
     Calabash::Launchctl.instance.maybe_exit_cucumber_on_failure(scenario, self)
   else
-    RunLoop.log_error("Unknown action in After hook")
+    RunLoop.log_error("Unknown action: #{after_action} in After hook")
     Calabash::Launchctl.instance.maybe_exit_cucumber_on_failure(scenario, self)
   end
 end

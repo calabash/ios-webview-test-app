@@ -17,8 +17,10 @@ module WebViewApp
           index = 0
         when :wkwebview
           index = 1
+        when :safariwebview
+          index = 2
         else
-          raise "Expected '#{page_id}' to be one of [:uiwebview, :wkwebview]"
+          raise "Expected '#{page_id}' to be one of [:uiwebview, :wkwebview, :safariwebview]"
       end
 
       qstr = "UITabBarButton index:#{index}"
@@ -41,22 +43,30 @@ module WebViewApp
         retry
       end
 
-      with_active_page do |page|
-        qstr = page.query_str
+      if RunLoop::Environment.xtc?
+        timeout = 240
+      elsif RunLoop::Environment.ci?
+        timeout = 60
+      else
+        timeout = 30
+      end
 
-        if RunLoop::Environment.xtc?
-          timeout = 240
-        elsif RunLoop::Environment.ci?
-          timeout = 60
-        else
-          timeout = 30
+      options = wait_options("that the web page loaded",
+                             {timeout: timeout})
+
+      # isLoading is defined for WKWebView and UIWebView
+      # but not for Safari View Controller
+      if page_id != :safariwebview
+        with_active_page do |page|
+          qstr = page.query_str
+          wait_for(options) do
+            res = query(qstr, :isLoading)
+            !res.empty? && res.first.to_i == 0
+          end
         end
-
-        options = wait_options('Waiting for page to load',
-                               {:timeout => timeout})
+      else
         wait_for(options) do
-          res = query(qstr, :isLoading)
-          !res.empty? && res.first.to_i == 0
+          backdoor("backdoorSafariWebViewLoadedSuccessfully")
         end
       end
     end
@@ -72,8 +82,10 @@ module WebViewApp
         page(WebViewApp::UIWebView)
       elsif page_class == 'WKWebView'
         page(WebViewApp::WKWebView)
+      elsif page_class == 'SFSafariView'
+        page(WebViewApp::SafariWebView)
       else
-        raise "Expected page class '#{page_class}' to be one of [UIWebView, WKWebView]"
+        raise "Expected page class '#{page_class}' to be one of [UIWebView, WKWebView, SafariWebView]"
       end
     end
 

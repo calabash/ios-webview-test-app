@@ -12,6 +12,9 @@
 
 @property(nonatomic, strong) XamSafariWebViewController *safariController;
 
+@property(atomic, assign) BOOL backdoorSafariWebViewLoadedSuccessfully;
+- (void)handleSafariWebViewLoadedNotification:(NSNotification *)notification;
+
 @end
 
 @implementation XamAppDelegate
@@ -54,6 +57,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
+  self.backdoorSafariWebViewLoadedSuccessfully = NO;
+  [[NSNotificationCenter defaultCenter]
+   addObserver:self
+   selector:@selector(handleSafariWebViewLoadedNotification:)
+   name:@"kCalHandleSafariWebViewControllerLoaded"
+   object:nil];
+
   XamUIWebViewController *firstController = [XamUIWebViewController new];
   XamWKWebViewController *secondViewController = [XamWKWebViewController new];
   UIViewController *thirdViewController = [UIViewController new];
@@ -77,6 +87,19 @@
 #endif
 
   return YES;
+}
+
+- (void)handleSafariWebViewLoadedNotification:(NSNotification *)notification {
+  NSLog(@"Handling Safari WebView Loaded notification");
+  NSLog(@"%@", notification.userInfo);
+
+  NSString *value = notification.userInfo[@"first_load"];
+
+  if (!value) {
+    self.backdoorSafariWebViewLoadedSuccessfully = NO;
+  } else {
+    self.backdoorSafariWebViewLoadedSuccessfully = [value isEqualToString:@"YES"];
+  }
 }
 
 - (BOOL)  tabBarController:(UITabBarController *)tabBarController

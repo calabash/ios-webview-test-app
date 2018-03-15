@@ -1,3 +1,4 @@
+
 #import "XamSafariWebViewController.h"
 
 @implementation XamSafariWebViewController
@@ -75,8 +76,16 @@
     [super viewDidDisappear:animated];
 }
 
-- (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
+#pragma mark - Delegate
 
+- (void)safariViewController:(SFSafariViewController *)controller
+      didCompleteInitialLoad:(BOOL)didLoadSuccessfully {
+    NSLog(@"Safari WebView page loaded: %@", @(didLoadSuccessfully));
+
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"kCalHandleSafariWebViewControllerLoaded"
+     object:nil
+     userInfo:@{@"first_load" : didLoadSuccessfully ? @"YES" : @"NO"}];
 }
 
 @end

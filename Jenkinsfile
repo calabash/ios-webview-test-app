@@ -11,7 +11,7 @@ pipeline {
     SLACK_COLOR_WARNING = '#FFC300'
     SLACK_COLOR_GOOD    = '#3EB991'
 
-    PROJECT_NAME = 'ios-webview-test-app'
+    PROJECT_NAME = 'iOS CalWebView'
   }
 
   stages {

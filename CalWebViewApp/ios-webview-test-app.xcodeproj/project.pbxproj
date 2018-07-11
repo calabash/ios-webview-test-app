@@ -44,6 +44,8 @@
 		F56E5A4F1AC5914A005D7D0C /* FLWebViewLICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = F56E5A4B1AC55E1F005D7D0C /* FLWebViewLICENSE.md */; };
 		F56E5A511AC59583005D7D0C /* GlyphishLICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = F56E5A501AC59579005D7D0C /* GlyphishLICENSE.md */; };
 		F56E5A521AC59588005D7D0C /* GlyphishLICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = F56E5A501AC59579005D7D0C /* GlyphishLICENSE.md */; };
+		F58DF6B720F616F50055BF38 /* XamURLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C584E920F6160600EC33E8 /* XamURLHelper.m */; };
+		F5C584EA20F6160600EC33E8 /* XamURLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C584E920F6160600EC33E8 /* XamURLHelper.m */; };
 		a851e37816c4ddd975adbf58 /* XamUIWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BFB281987EF8700299AEF /* XamUIWebViewController.m */; };
 		ab943fbf9d0ac91728d35abe /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F52BFB131987EF8700299AEF /* UIKit.framework */; };
 		cc8f9377c616d69147b3de31 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F52BFB2A1987EF8700299AEF /* Images.xcassets */; };
@@ -85,6 +87,8 @@
 		F56E5A4B1AC55E1F005D7D0C /* FLWebViewLICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; lineEnding = 0; path = FLWebViewLICENSE.md; sourceTree = "<group>"; };
 		F56E5A501AC59579005D7D0C /* GlyphishLICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; lineEnding = 0; path = GlyphishLICENSE.md; sourceTree = "<group>"; };
 		F56E5A531AC59779005D7D0C /* page.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; lineEnding = 0; path = page.html; sourceTree = "<group>"; };
+		F5C584E820F6160600EC33E8 /* XamURLHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XamURLHelper.h; sourceTree = "<group>"; };
+		F5C584E920F6160600EC33E8 /* XamURLHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XamURLHelper.m; sourceTree = "<group>"; };
 		F5E026F01FA03C85001B38A0 /* CalWebView-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CalWebView-Info.plist"; sourceTree = "<group>"; };
 		F5FE79621988070200842E74 /* CalWebView-cal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CalWebView-cal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		a66015686499dbb45da8c3c4 /* CFNetwork.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -167,6 +171,8 @@
 				66D6976F1A93DACC0035A763 /* XamWKWebViewController.m */,
 				B2BDB29A1D77851A00ACB9F6 /* XamSafariWebViewController.h */,
 				B2BDB29B1D77853300ACB9F6 /* XamSafariWebViewController.m */,
+				F5C584E820F6160600EC33E8 /* XamURLHelper.h */,
+				F5C584E920F6160600EC33E8 /* XamURLHelper.m */,
 				F52BFB2A1987EF8700299AEF /* Images.xcassets */,
 				F55185541AC34BB600CE06DC /* iTunesArtwork */,
 				F52EA1071C3AB35400F5862B /* XIB */,
@@ -389,6 +395,7 @@
 				F56E5A361AC55CF6005D7D0C /* WKWebView+FLWKWebView.m in Sources */,
 				F56E5A321AC55CF6005D7D0C /* UIWebView+FLUIWebView.m in Sources */,
 				F52B4F9F1F98F2C70030134D /* MBFingerTipWindow.m in Sources */,
+				F5C584EA20F6160600EC33E8 /* XamURLHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +407,7 @@
 				a851e37816c4ddd975adbf58 /* XamUIWebViewController.m in Sources */,
 				7819544bc7642b5d4a9dbcf1 /* UIView+Positioning.m in Sources */,
 				66D697711A93DACC0035A763 /* XamWKWebViewController.m in Sources */,
+				F58DF6B720F616F50055BF38 /* XamURLHelper.m in Sources */,
 				B2BDB29D1D77853300ACB9F6 /* XamSafariWebViewController.m in Sources */,
 				f23b5a94a19df2bb34667ee7 /* XamAppDelegate.m in Sources */,
 				F56E5A371AC55CF6005D7D0C /* WKWebView+FLWKWebView.m in Sources */,

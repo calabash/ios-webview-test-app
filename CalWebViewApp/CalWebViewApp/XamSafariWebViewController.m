@@ -1,5 +1,6 @@
 
 #import "XamSafariWebViewController.h"
+#import "XamURLHelper.h"
 
 @implementation XamSafariWebViewController
 
@@ -33,9 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    NSString *page = @"https://calabash-ci.xyz/CalWebViewApp/page.html";
-    NSURL *url = [NSURL URLWithString:page];
+    NSURL *url = [XamURLHelper URLForTestPage];
     SFSafariViewController *controller;
     
 #ifdef __IPHONE_11_0

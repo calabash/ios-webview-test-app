@@ -1,4 +1,6 @@
+
 #import "XamUIWebViewController.h"
+#import "XamURLHelper.h"
 
 typedef enum : NSUInteger {
   kTagView = 0,
@@ -76,10 +78,7 @@ typedef enum : NSUInteger {
   if (![self.view viewWithTag:kTagWebView]) {
     UIWebView *webView = self.webView;
     [self.view addSubview:webView];
-
-    NSString *page = @"https://calabash-ci.xyz/CalWebViewApp/page.html";
-    NSURL *url = [NSURL URLWithString:page];
-
+    NSURL *url = [XamURLHelper URLForTestPage];
     [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
   }
   [super viewDidAppear:animated];

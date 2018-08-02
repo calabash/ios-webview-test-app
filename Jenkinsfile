@@ -1,12 +1,10 @@
 #!/usr/bin/env groovy
-String cron_string = BRANCH_NAME == "master" ? "H H(0-8) * * *" : ""
 
 pipeline {
   agent { label 'master' }
-  triggers { cron(cron_string) }
 
   environment {
-    DEVELOPER_DIR = '/Xcode/9.2/Xcode.app/Contents/Developer'
+    DEVELOPER_DIR = '/Xcode/9.4.1/Xcode.app/Contents/Developer'
 
     SLACK_COLOR_DANGER  = '#E01563'
     SLACK_COLOR_INFO    = '#6ECADC'
@@ -14,6 +12,13 @@ pipeline {
     SLACK_COLOR_GOOD    = '#3EB991'
 
     PROJECT_NAME = 'iOS CalWebView'
+  }
+
+  options {
+    disableConcurrentBuilds()
+    timestamps()
+    buildDiscarder(logRotator(numToKeepStr: '10'))
+    timeout(time: 75, unit: 'MINUTES')
   }
 
   stages {
@@ -30,6 +35,7 @@ pipeline {
     }
     stage('Prepare') {
       environment {
+        // TODO: pages are now on s3 and should be pulled from there
         IFRAME_SOURCE="CalWebViewApp/CalWebViewApp/iframe.html"
         PAGE_SOURCE="CalWebViewApp/CalWebViewApp/page.html"
 
@@ -83,11 +89,5 @@ pipeline {
       slackSend (color: "${env.SLACK_COLOR_GOOD}",
                 message: "${env.PROJECT_NAME} [${env.GIT_BRANCH}] #${env.BUILD_NUMBER} *Success* after ${currentBuild.durationString.replace('and counting', '')}(<${env.BUILD_URL}|Open>)")
     }
-  }
-
-  options {
-    disableConcurrentBuilds()
-    timeout(time: 60, unit: 'MINUTES')
-    timestamps()
   }
 }

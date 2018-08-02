@@ -1,6 +1,6 @@
 | master  |  [license](LICENSE) |
 |---------|---------------------|
-|[![Build Status](https://travis-ci.org/calabash/ios-webview-test-app.svg?branch=master)](https://travis-ci.org/calabash/ios-webview-test-app)| [![License](https://img.shields.io/badge/licence-MIT-blue.svg)](http://opensource.org/licenses/MIT) |
+| [![Build Status](https://travis-ci.org/calabash/ios-webview-test-app.svg?branch=master)](https://travis-ci.org/calabash/ios-webview-test-app)<br>[![Build Status](http://calabash-ci.xyz:8081/job/ios-webview-test-app/job/feature%252Fjenkins_pipeline/badge/icon)](http://calabash-ci.xyz:8081/job/ios-webview-test-app/job/feature%252Fjenkins_pipeline/)| [![License](https://img.shields.io/badge/licence-MIT-blue.svg)](http://opensource.org/licenses/MIT) |
 
 ## CalWebView App
 

@@ -9,6 +9,14 @@ h1 {margin-top: 44px;}
 </style>
 
 <body>
+  <script type="application/javascript">
+window.onload = function(){
+ var elem = document.createElement('h3');
+ elem.innerHTML = 'Document Loaded!'
+ document.body.insertBefore(elem, document.body.childNodes[0])
+}
+  </script>
+
   <h1>H1 Header!</h1>
 
   <h2>H2 Header!</h2>
@@ -60,10 +68,8 @@ h1 {margin-top: 44px;}
     }
   });
 }());
-
     </script>
   </div>
-
 
   </br>
   <hr id="green_stripe" width="300" size="8" color="green" >

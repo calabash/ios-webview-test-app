@@ -1,14 +1,15 @@
 source "https://rubygems.org"
 
 gem "calabash-cucumber", :github => "calabash/calabash-ios", :branch => "develop"
+gem "cucumber", "2.99.0"
 gem "run_loop", :github => "calabash/run_loop", :branch => "develop"
+gem "json", "1.8.6"
 gem "briar", "~> 2.0"
 gem "luffa", "~> 1.0", ">= 1.0.2"
 
 # Keep these sync'd with config/xtc-other-gems.rb
 gem "rspec", "~> 3.0"
 gem "xamarin-test-cloud", "~> 2.1"
-gem "cucumber", "~> 2.0"
 
 gem "xcpretty"
 gem "pry"

@@ -1,15 +1,15 @@
 GIT
   remote: git://github.com/calabash/run_loop.git
-  revision: 3d9292fd6a920eae54ada69665353544486e93ce
+  revision: 4759d308f7c6bf0f629905725c9277ea4b09007f
   branch: develop
   specs:
-    run_loop (2.6.4)
+    run_loop (3.0.1)
       CFPropertyList (~> 2.2)
       awesome_print (~> 1.2)
       command_runner_ng (>= 0.0.2)
       httpclient (>= 2.7.1, < 3.0)
       i18n (>= 0.7.0, < 1.0)
-      json (~> 1.8)
+      json
       thor (>= 0.18.1, < 1.0)
 
 GEM
@@ -17,7 +17,7 @@ GEM
   specs:
     CFPropertyList (2.3.6)
     awesome_print (1.8.0)
-    command_runner_ng (0.1.3)
+    command_runner_ng (0.1.4)
     concurrent-ruby (1.0.5)
     httpclient (2.8.3)
     i18n (0.9.5)
@@ -31,7 +31,7 @@ GEM
     retriable (2.0.2)
     rouge (2.0.7)
     thor (0.20.0)
-    xcpretty (0.2.8)
+    xcpretty (0.3.0)
       rouge (~> 2.0.7)
 
 PLATFORMS
@@ -39,9 +39,10 @@ PLATFORMS
 
 DEPENDENCIES
   bundler
+  json (= 1.8.6)
   luffa
   run_loop!
   xcpretty
 
 BUNDLED WITH
-   1.16.1
+   1.16.4

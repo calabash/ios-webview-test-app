@@ -15,7 +15,7 @@ $ SERIES='DeviceAgent 2.0' bin/xtc.sh App-Center-Test-Cloud/latest-releases-ios
 Responds to these env variables:
 
     SERIES: the Test Cloud series - defaults to master
-    AC_TOKEN: appcenter token - defaults to token from Calabash.keychain.
+    AC_TOKEN: appcenter token - defaults to token from TestCloudDev.keychain.
 "
 
   exit 64
@@ -34,22 +34,22 @@ hash appcenter 2>/dev/null || {
 info "Using $(appcenter --version)"
 
 if [ "${AC_TOKEN}" = "" ]; then
-  KEYCHAIN="${HOME}/.calabash/Calabash.keychain"
+  KEYCHAIN="${HOME}/.test-cloud-dev/TestCloudDev.keychain"
 
   if [ ! -e "${KEYCHAIN}" ]; then
-    echo "Cannot find AppCenter token: there is no Calabash.keychain"
+    echo "Cannot find AppCenter token: there is no TestCloudDev.keychain"
     echo "  ${KEYCHAIN}"
     exit 1
   fi
 
-  if [ ! -e "${HOME}/.calabash/find-keychain-credential.sh" ]; then
+  if [ ! -e "${HOME}/.test-cloud-dev/find-keychain-credential.sh" ]; then
     echo "Cannot find AppCenter token: no find-keychain-credential.sh script"
-    echo "  ${HOME}/.calabash/find-keychain-credential.sh"
+    echo "  ${HOME}/.test-cloud-dev/find-keychain-credential.sh"
     exit 1
   fi
 
-  info "Fetching AppCenter token from Calabash.keychain"
-  AC_TOKEN=$("${HOME}/.calabash/find-keychain-credential.sh" api-token)
+  info "Fetching AppCenter token from TestCloudDev.keychain"
+  AC_TOKEN=$("${HOME}/.test-cloud-dev/find-keychain-credential.sh" api-token)
 fi
 
 WORKSPACE="xtc-submit-calabash-linked"

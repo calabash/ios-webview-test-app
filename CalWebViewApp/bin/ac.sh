@@ -34,7 +34,7 @@ hash appcenter 2>/dev/null || {
 info "Using $(appcenter --version)"
 
 if [ "${AC_TOKEN}" = "" ]; then
-  KEYCHAIN="${HOME}/.test-cloud-dev/TestCloudDev.keychain"
+  KEYCHAIN="${HOME}/Library/Keychains/test-cloud-dev/TestCloudDev.keychain-db"
 
   if [ ! -e "${KEYCHAIN}" ]; then
     echo "Cannot find AppCenter token: there is no TestCloudDev.keychain"
@@ -42,14 +42,14 @@ if [ "${AC_TOKEN}" = "" ]; then
     exit 1
   fi
 
-  if [ ! -e "${HOME}/.test-cloud-dev/find-keychain-credential.sh" ]; then
+  if [ ! -e "${HOME}/Library/Keychains/test-cloud-dev/find-keychain-credential.sh" ]; then
     echo "Cannot find AppCenter token: no find-keychain-credential.sh script"
-    echo "  ${HOME}/.test-cloud-dev/find-keychain-credential.sh"
+    echo "  ${HOME}/Library/Keychains/test-cloud-dev/find-keychain-credential.sh"
     exit 1
   fi
 
   info "Fetching AppCenter token from TestCloudDev.keychain"
-  AC_TOKEN=$("${HOME}/.test-cloud-dev/find-keychain-credential.sh" api-token)
+  AC_TOKEN=$("${HOME}/Library/Keychains/test-cloud-dev/find-keychain-credential.sh" api-token)
 fi
 
 WORKSPACE="xtc-submit-calabash-linked"

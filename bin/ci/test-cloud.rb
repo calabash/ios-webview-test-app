@@ -4,12 +4,6 @@ require "luffa"
 require "bundler"
 require "run_loop"
 
-# Only maintainers can submit AC tests.
-if Luffa::Environment.travis_ci? && !ENV["TRAVIS_SECURE_ENV_VARS"]
-  Luffa.log_info("Skipping AC submission; non-maintainer activity")
-  exit 0
-end
-
 device_set = ENV["AC_DEVICE_SET"]
 
 if !device_set || device_set == ""

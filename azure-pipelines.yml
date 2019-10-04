@@ -49,7 +49,7 @@ jobs:
     - script: bundle exec bin/ci/test-cloud.rb
       displayName: Test cloud tests
 
-    - script: bundle exec bin/ci/jenkins/cucumber.rb --tags ~@pending
+    - script: bundle exec bin/ci/azure-pipelines/cucumber.rb --tags ~@pending
       displayName: "exec cucmber"
 
     - task: PublishTestResults@2

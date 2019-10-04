@@ -55,7 +55,7 @@ Dir.chdir working_dir do
     passed_sims = []
     failed_sims = []
     devices.each do |key, simulator|
-      cucumber_cmd = "bundle exec cucumber -p default -f json -o reports/#{key}.json -f junit -o reports/#{key}.xml #{cucumber_args}"
+      cucumber_cmd = "bundle exec cucumber -p default -f json -o reports/#{key}.json -f junit -o reports/junit/#{key} #{cucumber_args}"
 
       env_vars = {
         "DEVICE_TARGET" => simulator.udid.chomp,

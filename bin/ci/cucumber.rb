@@ -57,8 +57,7 @@ Dir.chdir working_dir do
 
       env_vars = {
         "DEVICE_TARGET" => simulator.udid.chomp,
-        "APP" => app,
-        "DEBUG" => "1"
+        "APP" => app
       }
 
       RunLoop::CoreSimulator.terminate_core_simulator_processes

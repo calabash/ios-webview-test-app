@@ -25,12 +25,8 @@ jobs:
     - script: git submodule update --init --recursive
       displayName: "Update submodules"
 
-    - script: |
-        set -e
-        gem update --system
-        gem uninstall -Vax --force --no-abort-on-dependent calabash-cucumber
-        gem uninstall -Vax --force --no-abort-on-dependent run_loop
-      displayName: "Install gems"
+    - script: gem update --system
+      displayName: "Update gems"
 
     - script: |
         set -e
@@ -48,7 +44,7 @@ jobs:
     - script: bundle exec bin/ci/test-cloud.rb
       displayName: Test cloud tests
 
-    - script: bundle exec bin/ci/azure-pipelines/cucumber.rb --tags ~@pending
+    - script: bundle exec bin/ci/cucumber.rb --tags ~@pending
       displayName: "exec cucmber"
 
     - task: PublishTestResults@2

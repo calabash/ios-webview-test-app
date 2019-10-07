@@ -32,7 +32,6 @@ Dir.chdir working_dir do
     xcode = RunLoop::Xcode.new
     simctl = RunLoop::Simctl.new
 
-    # we have to add one more if because ios 11 doesn't support iphone X, SE and iPad Pro (10.5-inch)
     if xcode.version.major < 11
       devices = {
         :iphoneXs => select_sim_by_name(simctl, "iPhone Xs"),
@@ -89,19 +88,6 @@ Dir.chdir working_dir do
     puts ''
     Luffa.log_info "passed on '#{passed}' out of '#{sims}'"
 
-    # if none failed then we have success
-    exit 0 if failed == 0
-
-    # we'll take 75% passing as good indicator of health
-    expected = 75
-    actual = ((passed.to_f/sims.to_f) * 100).to_i
-
-    if actual >= expected
-      Luffa.log_pass "We failed '#{failed}' sims, but passed '#{actual}%' so we say good enough"
-      exit 0
-    else
-      Luffa.log_fail "We failed '#{failed}' sims, which is '#{actual}%' and not enough to pass"
-      exit 1
-    end
+    exit failed
   end
 end

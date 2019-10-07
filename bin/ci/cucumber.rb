@@ -9,7 +9,6 @@ cucumber_args = "#{ARGV.join(" ")}"
 working_dir = File.expand_path(File.join(File.dirname(__FILE__),
                                          "..",
                                          "..",
-                                         "..",
                                          "CalWebViewApp"))
 app = File.join(working_dir, "Products", "app-cal", "CalWebView-cal.app")
 

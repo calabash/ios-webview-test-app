@@ -1,3 +1,15 @@
+trigger:
+  tags:
+    include:
+    - '*'
+  branches:
+    include:
+    - master
+pr:
+  branches:
+    include:
+    - master
+
 jobs:
   - job:
     timeoutInMinutes: 120

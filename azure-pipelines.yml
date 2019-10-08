@@ -1,3 +1,8 @@
+variables:
+  # When Agent.JobName matches this value (and the git ref is a tag), then
+  # built artifacts will be published to Azure Blob Storage.
+  AzurePublishWhen: "Mojave-Xcode-10.3"
+
 trigger:
   tags:
     include:
@@ -53,11 +58,33 @@ jobs:
         calabash-codesign/apple/create-keychain.sh
       displayName: "Download and install keychain"
 
+    - script: |
+        set -e
+        bundle install
+        make app-cal
+        make ipa-cal
+      workingDirectory: CalWebViewApp
+      displayName: "Build app"
+
     - script: bundle exec bin/ci/test-cloud.rb
       displayName: Test cloud tests
 
     - script: bundle exec bin/ci/cucumber.rb --tags ~@pending
       displayName: "exec cucmber"
+
+    # azureStorage* env vars are defined in the pipeline UI as secret variables
+    - task: Bash@3
+      inputs:
+        targetType: filePath
+        filePath: "./bin/ci/az-publish.sh"
+      env:
+        AZURE_STORAGE_ACCOUNT: $(AzureStorageAccount)
+        AZURE_STORAGE_KEY: $(AzureStorageKey)
+        AZURE_STORAGE_CONNECTION_STRING: $(AzureStorageConnectionString)
+        SOURCE_BRANCH: $(Build.SourceBranch)
+      displayName: "Publish to Azure Blob Storage"
+      # condition: and(succeeded(), eq(variables['Agent.JobName'], variables['AzurePublishWhen']), startsWith(variables['Build.SourceBranch'], 'refs/tags/'))
+      condition: eq(variables['Agent.JobName'], variables['AzurePublishWhen'])
 
     - task: PublishTestResults@2
       displayName: 'Publish Test Results'

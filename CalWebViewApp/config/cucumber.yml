@@ -15,11 +15,7 @@ device_list.each do |device|
   devices[device.to_sym] = { dir: dir, ip: ip, udid: udid }
 end
 
-if ENV["USER"] == "jenkins"
-  formatter = "pretty"
-else
-  formatter = "Slowhandcuke::Formatter"
-end
+formatter = "pretty"
 
 %>
 

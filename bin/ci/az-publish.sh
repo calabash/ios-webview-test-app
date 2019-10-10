@@ -76,7 +76,7 @@ XC_VERSION=$(/usr/libexec/PlistBuddy -c "Print :DTXcode" ${INFO_PLIST})
 
 GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 # We don't need to use AdHoc when executing locally
-if [[ "${GIT_BRANCH}" =~ "tag/" ] && [ -e ./.azure-credentials ]]; then
+if [[ "${GIT_BRANCH}" =~ "tag/" && -e ./.azure-credentials ]]; then
   BUILD_ID="CalWebView-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}"
 else
   BUILD_ID="CalWebView-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}-AdHoc"

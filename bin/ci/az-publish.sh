@@ -2,12 +2,6 @@
 
 set -eo pipefail
 
-function xcode_version {
-  xcrun xcodebuild -version | \
-    grep -E "(\d+\.\d+(\.\d+)?)" | cut -f2- -d" " | \
-    tr -d "\n"
-}
-
 function info {
   if [ "${TERM}" = "dumb" ]; then
     echo "INFO: $1"

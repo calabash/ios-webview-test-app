@@ -98,7 +98,7 @@ ARM_IPA="${IPA_PRODUCT_DIR}/CalWebView-cal.ipa"
 ARM_IPA_NAME="${BUILD_ID}.ipa"
 azupload "${ARM_IPA}" "${ARM_IPA_NAME}" "${ARM_CONTAINER_NAME}"
 
-# Upload `ipa-cal/CalWebViewApp_ipa.app` (zipped)
+# Upload `ipa-cal/CalWebViewApp.app` (zipped)
 ARM_APP_ZIP="${IPA_PRODUCT_DIR}/CalWebView-cal.app.zip"
 ARM_APP_NAME="${BUILD_ID}.app.zip"
 azupload "${ARM_APP_ZIP}" "${ARM_APP_NAME}" "${ARM_CONTAINER_NAME}"

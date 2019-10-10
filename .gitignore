@@ -1,3 +1,6 @@
+# credentials
+.azure-credentials
+
 # turds
 (.*/)?\#[^/]*\#$
 tags

@@ -26,7 +26,7 @@ function zip_with_ditto {
 
 # $1 => SOURCE PATH
 # $2 => TARGET NAME
-# $e => CONTAINER NAME
+# $3 => CONTAINER NAME
 function azupload {
   az storage blob upload \
     --container-name "${3}" \

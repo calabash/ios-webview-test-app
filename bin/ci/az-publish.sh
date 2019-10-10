@@ -26,16 +26,19 @@ function zip_with_ditto {
 
 # $1 => SOURCE PATH
 # $2 => TARGET NAME
+# $e => CONTAINER NAME
 function azupload {
   az storage blob upload \
-    --container-name test-apps \
+    --container-name "${3}" \
     --file "${1}" \
     --name "${2}"
   echo "${1} artifact uploaded with name ${2}"
 }
 
-# Pipeline Variables are set through the AzDevOps UI
-# See also the ./azure-pipelines.yml
+if [ -e ./.azure-credentials ]; then
+  source ./.azure-credentials
+fi
+
 if [[ -z "${AZURE_STORAGE_ACCOUNT}" ]]; then
   echo "AZURE_STORAGE_ACCOUNT is required"
   exit 1
@@ -54,35 +57,60 @@ fi
 # Evaluate git-sha value
 GIT_SHA=$(git rev-parse --verify HEAD | tr -d '\n')
 
+if [ "${BUILD_SOURCESDIRECTORY}" != "" ]; then
+  WORKING_DIR="${BUILD_SOURCESDIRECTORY}"
+else
+  WORKING_DIR="."
+fi
+
+PRODUCT_DIR="${WORKING_DIR}/CalWebViewApp/Products"
+APP_PRODUCT_DIR="${PRODUCT_DIR}/app-cal"
+IPA_PRODUCT_DIR="${PRODUCT_DIR}/ipa-cal"
+INFO_PLIST="${APP_PRODUCT_DIR}/CalWebView-cal.app/Info.plist"
+
 # Evaluate CalWebViewApp version (from Info.plist)
-VERSION=$(plutil -p CalWebViewApp/Products/app-cal/CalWebView-cal.app/Info.plist | grep CFBundleShortVersionString | grep -o '"[[:digit:].]*"' | sed 's/"//g')
+VERSION=$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" ${INFO_PLIST})
 
 # Evaluate the Xcode version used to build artifacts
-XC_VERSION=$(xcode_version)
+XC_VERSION=$(/usr/libexec/PlistBuddy -c "Print :DTXcode" ${INFO_PLIST})
 
-az --version
+GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+# We don't need to use AdHoc when executing locally
+if [[ "${GIT_BRANCH}" =~ "tag/" ] && [ -e ./.azure-credentials ]]; then
+  BUILD_ID="CalWebView-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}"
+else
+  BUILD_ID="CalWebView-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}-AdHoc"
+fi
 
-WORKING_DIR="${BUILD_SOURCESDIRECTORY}"
+# Simulators
+SIM_CONTAINER_NAME="ios-simulator-test-apps"
 
-# Upload `CalWebViewApp.app` (zipped)
-APP_ZIP="${WORKING_DIR}/CalWebViewApp/Products/app-cal/CalWebView-cal.app.zip"
-zip_with_ditto "${WORKING_DIR}/CalWebViewApp/Products/app-cal/CalWebView-cal.app" "${APP_ZIP}"
-APP_NAME="CalWebView-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}.app.zip"
-azupload "${APP_ZIP}" "${APP_NAME}"
+# Upload `app-cal/CalWebViewApp.app` (zipped)
+SIM_APP_ZIP="${APP_PRODUCT_DIR}/CalWebView-sim.app.zip"
+SIM_APP_NAME="${BUILD_ID}.app.zip"
+azupload "${SIM_APP_ZIP}" "${SIM_APP_NAME}" "${SIM_CONTAINER_NAME}"
 
-# Upload `CalWebViewApp.app.dSYM` (zipped)
-APP_DSYM_ZIP="${WORKING_DIR}/CalWebViewApp/Products/app-cal/CalWebView-cal.app.dSYM.zip"
-zip_with_ditto "${WORKING_DIR}/CalWebViewApp/Products/app-cal/CalWebView-cal.app.dSYM" "${APP_DSYM_ZIP}"
-APP_DSYM_NAME="CalWebView-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}.app.dSYM.zip"
-azupload "${APP_DSYM_ZIP}" "${APP_DSYM_NAME}"
+# Upload `app-cal/CalWebViewApp.app.dSYM` (zipped)
+SIM_APP_DSYM_ZIP="${APP_PRODUCT_DIR}/CalWebView-cal.app.dSYM.zip"
+zip_with_ditto "${APP_PRODUCT_DIR}/CalWebView-cal.app.dSYM" "${SIM_APP_DSYM_ZIP}"
+SIM_APP_DSYM_NAME="${BUILD_ID}.app.dSYM.zip"
+azupload "${SIM_APP_DSYM_ZIP}" "${SIM_APP_DSYM_NAME}" "${SIM_CONTAINER_NAME}"
 
-# Upload `CalWebViewApp.ipa`
-IPA="${WORKING_DIR}/CalWebViewApp/Products/ipa-cal/CalWebView-cal.ipa"
-IPA_NAME="CalWebView-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}.ipa"
-azupload "${IPA}" "${IPA_NAME}"
+# ARM
+ARM_CONTAINER_NAME="ios-arm-test-apps"
 
-# Upload `CalWebViewApp.ipa.dSYM` (zipped)
-IPA_DSYM_ZIP="${WORKING_DIR}/CalWebViewApp/Products/ipa-cal/CalWebView-cal.app.dSYM.zip"
-zip_with_ditto "${WORKING_DIR}/CalWebViewApp/Products/ipa-cal/CalWebView-cal.app.dSYM" "${IPA_DSYM_ZIP}"
-IPA_DSYM_NAME="CalWebView-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}.ipa.dSYM.zip"
-azupload "${IPA_DSYM_ZIP}" "${IPA_DSYM_NAME}"
+# Upload `ipa-cal/CalWebViewApp.ipa`
+ARM_IPA="${IPA_PRODUCT_DIR}/CalWebView-cal.ipa"
+ARM_IPA_NAME="${BUILD_ID}.ipa"
+azupload "${ARM_IPA}" "${ARM_IPA_NAME}" "${ARM_CONTAINER_NAME}"
+
+# Upload `ipa-cal/CalWebViewApp_ipa.app` (zipped)
+ARM_APP_ZIP="${IPA_PRODUCT_DIR}/CalWebView-cal.app.zip"
+ARM_APP_NAME="${BUILD_ID}.app.zip"
+azupload "${ARM_APP_ZIP}" "${ARM_APP_NAME}" "${ARM_CONTAINER_NAME}"
+
+# Upload `ipa-cal/CalWebViewApp.app.dSYM` (zipped)
+ARM_APP_DSYM_ZIP="${IPA_PRODUCT_DIR}/CalWebView-cal.app.dSYM.zip"
+zip_with_ditto "${IPA_PRODUCT_DIR}/CalWebView-cal.app.dSYM" "${ARM_APP_DSYM_ZIP}"
+ARM_APP_DSYM_NAME="${BUILD_ID}.app.dSYM.zip"
+azupload "${ARM_APP_DSYM_ZIP}" "${ARM_APP_DSYM_NAME}" "${ARM_CONTAINER_NAME}"

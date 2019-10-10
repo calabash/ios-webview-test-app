@@ -66,11 +66,11 @@ jobs:
       workingDirectory: CalWebViewApp
       displayName: "Build app"
 
-    # - script: bundle exec bin/ci/test-cloud.rb
-    #   displayName: Test cloud tests
+    - script: bundle exec bin/ci/test-cloud.rb
+      displayName: Test cloud tests
 
-    # - script: bundle exec bin/ci/cucumber.rb --tags ~@pending
-    #   displayName: "exec cucumber"
+    - script: bundle exec bin/ci/cucumber.rb --tags ~@pending
+      displayName: "exec cucumber"
 
     # azureStorage* env vars are defined in the pipeline UI as secret variables
     - task: Bash@3
@@ -83,8 +83,7 @@ jobs:
         AZURE_STORAGE_CONNECTION_STRING: $(AzureStorageConnectionString)
         SOURCE_BRANCH: $(Build.SourceBranch)
       displayName: "Publish to Azure Blob Storage"
-      # condition: and(succeeded(), eq(variables['Agent.JobName'], variables['AzurePublishWhen']), startsWith(variables['Build.SourceBranch'], 'master'))
-      condition: and(succeeded(), eq(variables['Agent.JobName'], variables['AzurePublishWhen']))
+      condition: and(succeeded(), eq(variables['Agent.JobName'], variables['AzurePublishWhen']), startsWith(variables['Build.SourceBranch'], 'master'))
 
     - task: PublishTestResults@2
       displayName: 'Publish Test Results'

@@ -70,7 +70,7 @@ jobs:
     #   displayName: Test cloud tests
 
     # - script: bundle exec bin/ci/cucumber.rb --tags ~@pending
-    #   displayName: "exec cucmber"
+    #   displayName: "exec cucumber"
 
     # azureStorage* env vars are defined in the pipeline UI as secret variables
     - task: Bash@3

@@ -23,9 +23,6 @@ end
 Dir.chdir working_dir do
 
   Bundler.with_clean_env do
-    Luffa.unix_command("bundle install")
-
-    Luffa.unix_command("make app-cal")
     FileUtils.mkdir_p("reports")
 
     xcode = RunLoop::Xcode.new

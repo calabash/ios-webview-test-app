@@ -8,3 +8,5 @@ require 'rspec'
 unless ENV['XAMARIN_TEST_CLOUD']
   require 'pry'
 end
+
+RunLoop::Shell::DEFAULT_OPTIONS[:timeout] = 60

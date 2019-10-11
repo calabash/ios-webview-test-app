@@ -85,8 +85,8 @@ SIM_APP_NAME="${BUILD_ID}.app.zip"
 azupload "${SIM_APP_ZIP}" "${SIM_APP_NAME}" "${SIM_CONTAINER_NAME}"
 
 # Upload `app-cal/CalWebViewApp.app.dSYM` (zipped)
-SIM_APP_DSYM_ZIP="${APP_PRODUCT_DIR}/CalWebView-cal.app.dSYM.zip"
-zip_with_ditto "${APP_PRODUCT_DIR}/CalWebView-cal.app.dSYM" "${SIM_APP_DSYM_ZIP}"
+SIM_APP_DSYM_ZIP="${APP_PRODUCT_DIR}/CalWebView-sim.app.dSYM.zip"
+zip_with_ditto "${APP_PRODUCT_DIR}/CalWebView-sim.app.dSYM" "${SIM_APP_DSYM_ZIP}"
 SIM_APP_DSYM_NAME="${BUILD_ID}.app.dSYM.zip"
 azupload "${SIM_APP_DSYM_ZIP}" "${SIM_APP_DSYM_NAME}" "${SIM_CONTAINER_NAME}"
 

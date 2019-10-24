@@ -58,14 +58,14 @@ jobs:
     - script: gem update --system
       displayName: "Update rubygems version"
 
+    - script: gem install bundler -v 1.17.3
+      displayName: "Install bundler 1.17.3"
+
     - script: |
         set -e
         ruby -v
         bundler -v
       displayName: "Ruby info"
-
-    - script: gem install bundler -v 1.17.3
-      displayName: "Install bundler 1.17.3"
 
     - script: |
         set -e

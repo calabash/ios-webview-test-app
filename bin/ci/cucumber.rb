@@ -27,7 +27,7 @@ Dir.chdir working_dir do
 
     xcode = RunLoop::Xcode.new
     simctl = RunLoop::Simctl.new
-
+    Luffa.log_info "our major version #{xcode.version.major}"
     if xcode.version.major < 11
       devices = {
         :iphoneXs => select_sim_by_name(simctl, "iPhone Xs"),

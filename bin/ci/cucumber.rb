@@ -39,8 +39,9 @@ Dir.chdir working_dir do
         :iphone11 => select_sim_by_name(simctl, "iPhone 11")
       }
     end
-
+    Luffa.log_info "devices after if #{devices}"
     devices.delete_if { |k, v| v.nil? }
+    Luffa.log_info "devices after delete #{devices}"
 
     FileUtils.rm_rf("reports")
     FileUtils.mkdir("reports")

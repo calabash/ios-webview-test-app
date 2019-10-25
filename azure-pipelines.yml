@@ -58,8 +58,10 @@ jobs:
     - script: gem update --system
       displayName: "Update rubygems version"
 
-    - script: gem install bundler -v 1.17.3
-      displayName: "Install bundler 1.17.3"
+    - script: |
+        gem uninstall bundler
+        gem install bundler -v 1.17.3
+      displayName: "Install bundler"
 
     - script: |
         set -e
@@ -78,10 +80,6 @@ jobs:
         git clone https://$(CalabashKeychainGitHubAccessToken)@github.com/xamarinhq/calabash-codesign.git
         calabash-codesign/apple/create-keychain.sh
       displayName: "Download and install keychain"
-
-    - script: bundle _1.17.3_ install
-      workingDirectory: 'CalWebViewApp'
-      displayName: "CalWebViewApp bundle install"
 
     - script: |
         set -e

@@ -60,7 +60,7 @@ jobs:
 
     - script: |
         gem uninstall bundler
-        gem install bundler -v 1.17.4
+        gem install bundler -v 1.17.3
       displayName: "Install bundler"
 
     - script: |

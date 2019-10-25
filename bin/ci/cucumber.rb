@@ -28,6 +28,8 @@ Dir.chdir working_dir do
     xcode = RunLoop::Xcode.new
     simctl = RunLoop::Simctl.new
 
+    xcrun instruments -s devices
+
     if xcode.version.major < 11
       devices = {
         :iphoneXs => select_sim_by_name(simctl, "iPhone Xs"),
@@ -49,6 +51,9 @@ Dir.chdir working_dir do
 
     passed_sims = []
     failed_sims = []
+    Luffa.log_info "#{devices}"
+    res = Luffa.unix_command("xcrun instruments -s devices")
+    Luffa.log_info "#{res}"
     devices.each do |key, simulator|
       cucumber_cmd = "bundle exec cucumber -p default -f json -o reports/#{key}.json -f junit -o reports/junit/#{key} #{cucumber_args}"
 
@@ -62,6 +67,9 @@ Dir.chdir working_dir do
       exit_code = Luffa.unix_command(cucumber_cmd,
                                      {:exit_on_nonzero_status => false,
                                       :env_vars => env_vars})
+
+      Luffa.log_info "#{exit_code}"
+      Luffa.log_info "#{simulator.to_s}"
       if exit_code == 0
         passed_sims << simulator.to_s
       else

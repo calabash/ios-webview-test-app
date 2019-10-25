@@ -67,6 +67,8 @@ jobs:
       
           echo 'Hello world'
           xcrun instruments -s devices
+          echo 'xcrun simctl list'
+          xcrun simctl list
 
     - script: |
         gem uninstall bundler

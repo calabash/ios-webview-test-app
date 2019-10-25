@@ -58,11 +58,10 @@ jobs:
     - script: gem update --system
       displayName: "Update rubygems version"
 
-    - script: gem uninstall bundler
-      displayName: "Uninstall bundler"
-
-    - script: gem install bundler -v 1.17.3
-      displayName: "Install bundler 1.17.3"
+    - script: |
+        gem uninstall bundler
+        gem install bundler
+      displayName: "Install bundler"
 
     - script: |
         set -e

@@ -38,6 +38,7 @@ screenshots
 vendor
 Gemfile.develop
 .ruby-version
+Gemfile.lock
 
 # briar
 .env

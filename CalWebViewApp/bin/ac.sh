@@ -64,11 +64,11 @@ else
 fi
 
 if [ "${SERIES}" = "" ]; then
-  SERIES=master
+  SERIES="Calabash"
 fi
 
 appcenter test run calabash \
-  --app "App-Center-Test-Cloud/CalWebView-cal" \
+  --app "App-Center-Test-Cloud/iOSCalWebView" \
   --devices "${1}" \
   --app-path "${WORKSPACE}/CalWebView-cal.ipa" \
   --test-series "${SERIES}" \

@@ -3,6 +3,8 @@ variables:
   # built artifacts will be published to Azure Blob Storage.
   - name: "AzurePublishWhen"
     value: "Mojave-Xcode-11.1"
+  - name: "RunTestCloudTestsWhenNever"
+    value: "Mojave-Xcode-11.2"
   - group: "XamarinUITestCI"
 
 trigger:
@@ -16,8 +18,9 @@ pr:
   branches:
     include:
     - master
+
 schedules:
-- cron: "0 1 * * Mon-Fri"
+- cron: "0 8 * * Mon-Fri"
   displayName: Nightly build
   branches:
     include:
@@ -92,12 +95,12 @@ jobs:
       displayName: "Build app"
 
     - script: bundle exec bin/ci/test-cloud.rb
-      displayName: Test cloud tests
+      displayName: "App Center Test"
+      condition: eq(variables['Agent.JobName'], variables['RunTestCloudTestsWhen'])
 
     - script: bundle exec bin/ci/cucumber.rb --tags ~@pending
       displayName: "exec cucumber"
 
-    # azureStorage* env vars are defined in the pipeline UI as secret variables
     - task: Bash@3
       inputs:
         targetType: filePath

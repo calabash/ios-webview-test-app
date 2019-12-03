@@ -33,9 +33,6 @@ INSTALLED_APP="${INSTALL_DIR}/${APP}"
 INSTALLED_DSYM="${INSTALL_DIR}/${DSYM}"
 INSTALLED_IPA="${INSTALL_DIR}/${IPA}"
 
-rm -rf "${INSTALL_DIR}"
-mkdir -p "${INSTALL_DIR}"
-
 info "Prepared install directory ${INSTALL_DIR}"
 
 BUILD_PRODUCTS_DIR="${XC_BUILD_DIR}/Build/Products/${XC_CONFIG}-iphoneos"

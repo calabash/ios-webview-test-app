@@ -26,7 +26,9 @@ Dir.chdir working_dir do
     FileUtils.mkdir_p("reports")
 
     xcode = RunLoop::Xcode.new
+    puts "Xcode: #{xcode}"
     simctl = RunLoop::Simctl.new
+    puts "Simctl: #{simctl}"
 
     if xcode.version.major < 11
       devices = {

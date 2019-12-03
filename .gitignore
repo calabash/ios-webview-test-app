@@ -49,6 +49,7 @@ ci-reports
 # xamarin build directory for XTC
 xtc-submit-calabash-embedded
 xtc-submit-calabash-linked
+testcloud-submit
 .xtc-credentials
 
 # Xcode 4+

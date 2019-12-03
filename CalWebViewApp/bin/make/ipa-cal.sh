@@ -100,7 +100,7 @@ fi
 
 banner "Preparing for XTC Submit"
 
-XTC_DIR="xtc-submit-calabash-linked"
+XTC_DIR="testcloud-submit"
 rm -rf "${XTC_DIR}"
 mkdir -p "${XTC_DIR}"
 

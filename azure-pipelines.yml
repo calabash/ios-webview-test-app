@@ -3,7 +3,7 @@ variables:
   # built artifacts will be published to Azure Blob Storage.
   - name: "AzurePublishWhen"
     value: "Mojave-Xcode-11.1"
-  - name: "RunTestCloudTestsWhenNever"
+  - name: "RunTestCloudTestsWhen"
     value: "Mojave-Xcode-11.2"
   - group: "XamarinUITestCI"
 
@@ -94,7 +94,8 @@ jobs:
       workingDirectory: CalWebViewApp
       displayName: "Build app"
 
-    - script: bundle exec bin/ci/test-cloud.rb
+    - script: SKIP_IPA_BUILD=1 bin/appcenter.sh App-Center-Test-Cloud/Calabash.iOS.CI
+      workingDirectory: 'CalWebViewApp'
       displayName: "App Center Test"
       condition: eq(variables['Agent.JobName'], variables['RunTestCloudTestsWhen'])
 

@@ -7,7 +7,7 @@ gem "json", "1.8.6"
 gem "briar", "~> 2.0"
 gem "luffa", "~> 1.0", ">= 1.0.2"
 
-# Keep these sync'd with config/xtc-other-gems.rb
+# Keep these sync'd with bin/make/ipa-cal.sh
 gem "rspec", "~> 3.0"
 gem "xamarin-test-cloud", "~> 2.1"
 

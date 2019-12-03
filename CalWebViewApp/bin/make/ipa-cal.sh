@@ -129,9 +129,12 @@ source "https://rubygems.org"
 
 gem "calabash-cucumber"
 gem "json", "1.8.6"
+gem 'rspec', '~> 3.0'
+gem "cucumber", "~> 2.0"
+gem "xamarin-test-cloud", "~> 2.1"
+
 EOF
 
-cat "config/xtc-other-gems.rb" >> "${XTC_DIR}/Gemfile"
 info "Wrote ${XTC_DIR}/Gemfile with contents"
 cat "${XTC_DIR}/Gemfile"
 

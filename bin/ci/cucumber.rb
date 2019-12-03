@@ -42,7 +42,7 @@ Dir.chdir working_dir do
 
     devices.delete_if { |k, v| v.nil? }
 
-    `xcrun simctl list devices`
+    system(*["xcrun", "simctl", "list", "devices"])
 
     FileUtils.rm_rf("reports")
     FileUtils.mkdir("reports")

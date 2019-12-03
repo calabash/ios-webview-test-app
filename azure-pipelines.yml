@@ -100,7 +100,7 @@ jobs:
       condition: eq(variables['Agent.JobName'], variables['RunTestCloudTestsWhen'])
 
     - script: bundle exec bin/ci/cucumber.rb --tags ~@pending
-      displayName: "exec cucumber"
+      displayName: "Cucumber"
 
     - task: Bash@3
       inputs:

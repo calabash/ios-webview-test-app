@@ -68,8 +68,8 @@ if [ "${2}" != "" ]; then
 fi)
 
 appcenter test run calabash \
-  --app App-Center-Test-Cloud/iOSCalWebView \
   --app-path testcloud-submit/CalWebView-cal.ipa \
+  --app App-Center-Test-Cloud/iOSCalWebView \
   --project-dir testcloud-submit \
   --token $APPCENTER_TOKEN \
   --devices "${1}" \

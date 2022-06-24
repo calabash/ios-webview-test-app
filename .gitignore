@@ -39,7 +39,7 @@ vendor
 Gemfile.develop
 .ruby-version
 Gemfile.lock
-
+CalWebViewApp/Gemfile.lock
 # briar
 .env
 

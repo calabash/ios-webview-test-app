@@ -22,7 +22,7 @@ end
 
 Dir.chdir working_dir do
 
-  Bundler.with_clean_env do
+  Bundler.with_original_env do
     FileUtils.mkdir_p("reports")
 
     xcode = RunLoop::Xcode.new

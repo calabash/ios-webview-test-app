@@ -1,14 +1,14 @@
 # careful using the @not_xtc tag
 # use for stuff like Scenario Outlines which are nyi on XTC
 not_xtc:     --tags ~@not_xtc
-not_sim:     --tags ~@simulator' --tags ~@simulator_only
-iphone_only: --tags ~@ipad' --tags ~@ipad_only
-ipad_only:   --tags ~@iphone' --tags ~@iphone_only
+not_sim:     --tags ~@simulator --tags ~@simulator_only
+iphone_only: --tags ~@ipad --tags ~@ipad_only
+ipad_only:   --tags ~@iphone --tags ~@iphone_only
 
 defaults:    -p not_xtc -p not_sim NO_STOP=1 --tags ~@pending
 
 default:     -p defaults --backtrace
-ci:          -p defaults --tags ~@no_ci'
+ci:          -p defaults --tags ~@no_ci
 
 wip:         -p defaults --tags @wip
 flicker:     -p defaults --tags @flickering

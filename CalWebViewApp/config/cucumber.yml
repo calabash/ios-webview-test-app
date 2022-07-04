@@ -4,6 +4,8 @@ xamarin_dir = "#{ENV['HOME']}/.xamarin"
 
 devices = {}
 
+APP = "./Products/app-cal/CalWebView-cal.app"
+
 device_list = ['neptune', 'venus', 'earp',
                'mars', 'saturn', 'pegasi',
                'hat', 'erik', 'denis']
@@ -23,7 +25,7 @@ common:  NO_STOP='1' -f <%= formatter %>
 
 ### SIMULATOR ###
 
-default: APP="./Products/app-cal/CalWebView-cal.app" -p common
+default: APP=<%= APP %> -p common
 
 ### DEVICE ###
 device_common: -p common BUNDLE_ID=sh.calaba.CalWebView-cal

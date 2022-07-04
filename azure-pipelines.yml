@@ -29,7 +29,6 @@ schedules:
 
 jobs:
   - job:
-    timeoutInMinutes: 120
     strategy:
       matrix:
         BigSur-Xcode-13.2:
@@ -38,8 +37,11 @@ jobs:
         Monterey-Xcode-13.3.1:
           IMAGE_POOL: 'macOS-12'
           XCODE_VERSION: '13.3.1'
+    timeoutInMinutes: 120
     pool:
       vmImage: $(IMAGE_POOL)
+    variables:
+    - group: XTCRunTimeArtifactsCI
 
     steps:
 
@@ -91,6 +93,9 @@ jobs:
       displayName: "Make ipa-cal"      
 
     - script: SKIP_IPA_BUILD=1 bin/appcenter.sh App-Center-Test-Cloud/Calabash.iOS.CI
+      env:
+        APPCENTER_ACCESS_TOKEN: $(AppCenterAPITokenProd)
+
       workingDirectory: 'CalWebViewApp'
       displayName: "App Center Test"
       condition: eq(variables['Agent.JobName'], variables['RunTestCloudTestsWhen'])

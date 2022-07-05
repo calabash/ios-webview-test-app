@@ -37,8 +37,8 @@ Dir.chdir working_dir do
       }
     else
       devices = {
-        :iphone11Pro => select_sim_by_name(simctl, "iPhone 11 Pro"),
-        :iphone11 => select_sim_by_name(simctl, "iPhone 11")
+        :iphone12Pro => select_sim_by_name(simctl, "iPhone 12 Pro"),
+        :iphone12 => select_sim_by_name(simctl, "iPhone 12")
       }
     end
 

@@ -37,7 +37,7 @@ jobs:
         Monterey-Xcode-13.3.1:
           IMAGE_POOL: 'macOS-12'
           XCODE_VERSION: '13.3.1'
-    timeoutInMinutes: 120
+    timeoutInMinutes: 240
     pool:
       vmImage: $(IMAGE_POOL)
     variables:

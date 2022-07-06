@@ -100,7 +100,7 @@ jobs:
       displayName: "App Center Test"
       condition: eq(variables['Agent.JobName'], variables['RunTestCloudTestsWhen'])
 
-    - script: bundle exec bin/ci/cucumber.rb features/css.feature
+    - script: bundle exec bin/ci/cucumber.rb
       displayName: "Cucumber"
 
     - task: Bash@3

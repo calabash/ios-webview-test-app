@@ -89,6 +89,9 @@ jobs:
       workingDirectory: 'CalWebViewApp'
       displayName: "Make ipa-cal"      
 
+    - script: bundle exec bin/ci/cucumber.rb
+      displayName: "Cucumber"
+      
     - script: SKIP_IPA_BUILD=1 bin/appcenter.sh App-Center-Test-Cloud/Calabash.iOS.CI
       env:
         APPCENTER_ACCESS_TOKEN: $(AppCenterAPITokenProd)
@@ -96,9 +99,6 @@ jobs:
       workingDirectory: 'CalWebViewApp'
       displayName: "App Center Test"
       condition: eq(variables['Agent.JobName'], variables['RunTestCloudTestsWhen'])
-
-    - script: bundle exec bin/ci/cucumber.rb
-      displayName: "Cucumber"
 
     - task: Bash@3
       inputs:

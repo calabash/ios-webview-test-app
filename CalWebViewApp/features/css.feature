@@ -3,6 +3,34 @@ Feature: CSS API
   As a Calabash iOS maintainer
   I want some tests that demonstrate the API is working.
 
+  Scenario: Query UIWebView with css
+    Given I am looking at the UIWebView tab
+    And I can see the h1 header with css
+    Then I can query for hrefs with css
+    When I query with css I should see at least 1 unordered lists
+    And I can query for the body with css
+
+  Scenario: Query WKWebView with css
+    Given I am looking at the WKWebView tab
+    And I can see the h1 header with css
+    Then I can query for hrefs with css
+    When I query with css I should see at least 1 unordered lists
+    Then I can query for the body with css
+
+  Scenario: Query SafariWebView with css
+    Given I am looking at the SafariWebView tab
+    And I can see the h1 header with css
+
+  Scenario: Query UIWebView for li with id using css
+    Given I am looking at the UIWebView tab
+    And I can see the h1 header with css
+    Then I can use css to find the "watermelon" list item
+
+  Scenario: Query WKWebView for li with id using css
+    Given I am looking at the WKWebView tab
+    And I can see the h1 header with css
+    Then I can use css to find the "watermelon" list item
+
   Scenario: Touch internal href on UIWebView with css
     Given I am looking at the UIWebView tab
     And I can see the h1 header with css
@@ -14,3 +42,17 @@ Feature: CSS API
     And I can see the h1 header with css
     When I touch the internal link with css
     Then a query for the FAQ with css should succeed
+
+  @restart
+  Scenario: Touch button on UIWebView with css
+    Given I am looking at the UIWebView tab
+    And I can see the green line with css
+    When I touch the toggle-the-secret button with css
+    Then I should see the secret message with css
+
+  @restart
+  Scenario: Touch button on WKWebView with css
+    Given I am looking at the WKWebView tab
+    And I can see the green line with css
+    When I touch the toggle-the-secret button with css
+    Then I should see the secret message with css

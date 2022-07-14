@@ -2,9 +2,9 @@ variables:
   # When Agent.JobName matches this value (and the git ref is a tag), then
   # built artifacts will be published to Azure Blob Storage.
   - name: "AzurePublishWhen"
-    value: "Mojave-Xcode-11.1"
+    value: "Monterey-Xcode-13.3.1"
   - name: "RunTestCloudTestsWhen"
-    value: "Mojave-Xcode-11.2"
+    value: "Monterey-Xcode-13.3.1"
   - group: "XamarinUITestCI"
 
 trigger:
@@ -29,23 +29,19 @@ schedules:
 
 jobs:
   - job:
-    timeoutInMinutes: 120
     strategy:
       matrix:
-        Mojave-Xcode-10.3:
-          IMAGE_POOL: 'macOS-10.14'
-          XCODE_VERSION: '10.3'
-        Mojave-Xcode-11.0:
-          IMAGE_POOL: 'macOS-10.14'
-          XCODE_VERSION: '11'
-        Mojave-Xcode-11.1:
-          IMAGE_POOL: 'macOS-10.14'
-          XCODE_VERSION: '11.1'
-        Mojave-Xcode-11.2:
-          IMAGE_POOL: 'macOS-10.14'
-          XCODE_VERSION: '11.2'
+        BigSur-Xcode-13.2:
+          IMAGE_POOL: 'macOS-11'
+          XCODE_VERSION: '13.2'
+        Monterey-Xcode-13.3.1:
+          IMAGE_POOL: 'macOS-12'
+          XCODE_VERSION: '13.3.1'
+    timeoutInMinutes: 240
     pool:
       vmImage: $(IMAGE_POOL)
+    variables:
+    - group: XTCRunTimeArtifactsCI
 
     steps:
 
@@ -62,11 +58,6 @@ jobs:
 
     - script: gem update --system
       displayName: "Update rubygems version"
-
-    - script: |
-        gem uninstall bundler
-        gem install bundler -v 2.0.2
-      displayName: "Install bundler"
 
     - script: |
         set -e
@@ -86,21 +77,28 @@ jobs:
         calabash-codesign/apple/create-keychain.sh
       displayName: "Download and install keychain"
 
-    - script: |
-        set -e
-        bundle install
-        make app-cal
-        make ipa-cal
-      workingDirectory: CalWebViewApp
-      displayName: "Build app"
+    - script: bundle install
+      workingDirectory: 'CalWebViewApp'
+      displayName: "CalWebViewApp bundle install"
 
+    - script: make app-cal
+      workingDirectory: 'CalWebViewApp'
+      displayName: "Make app-cal"
+
+    - script: make ipa-cal
+      workingDirectory: 'CalWebViewApp'
+      displayName: "Make ipa-cal"      
+
+    - script: bundle exec bin/ci/cucumber.rb
+      displayName: "Cucumber"
+      
     - script: SKIP_IPA_BUILD=1 bin/appcenter.sh App-Center-Test-Cloud/Calabash.iOS.CI
+      env:
+        APPCENTER_ACCESS_TOKEN: $(AppCenterAPITokenProd)
+
       workingDirectory: 'CalWebViewApp'
       displayName: "App Center Test"
       condition: eq(variables['Agent.JobName'], variables['RunTestCloudTestsWhen'])
-
-    - script: bundle exec bin/ci/cucumber.rb --tags ~@pending
-      displayName: "Cucumber"
 
     - task: Bash@3
       inputs:

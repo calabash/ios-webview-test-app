@@ -55,10 +55,17 @@ end
 
 Then(/^a query for the FAQ with css should succeed$/) do
   page = page(WebViewApp::TabBar).active_page
-  options = wait_options('FAQ List')
-  wait_for(options) do
-    scroll("scrollView", :down)
-    !query(page.query_str("css:'ul#faq-list'")).empty?
+
+  visible = lambda {
+    query(page.query_str("css:'ul#faq-list'")).count == 1
+  }
+
+  counter = 0
+  loop do
+    break if visible.call || counter == 4
+    scroll(page.query_str, :down)
+    step_pause
+    counter = counter + 1
   end
 end
 

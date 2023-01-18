@@ -16,10 +16,6 @@ $ SERIES='DeviceAgent 2.0' bin/appcenter.sh \
   App-Center-Test-Cloud/coordinator-experiment \
   48d137d6228ccda303b2a71b0d09e1d0629bf980
 
-The DeviceAgent-SHA optional argument allows tests to be run against any
-DeviceAgent that has been uploaded to S3 rather than the current active
-DeviceAgent for Test Cloud.
-
 If you need to test local changes to run-loop or Calabash on Test Cloud,
 use the BUILD_RUN_LOOP and BUILD_CALABASH env variables.
 
@@ -40,7 +36,7 @@ fi
 KEYCHAIN="${HOME}/.calabash/Calabash.keychain"
 
 if [ ! -e "${KEYCHAIN}" ]; then
-  echo "Cannot find S3 credentials: there is no Calabash.keychain"
+  echo "Cannot find credentials: there is no Calabash.keychain"
   echo "  ${KEYCHAIN}"
   exit 1
 fi
